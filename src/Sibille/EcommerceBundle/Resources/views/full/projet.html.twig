@@ -1,0 +1,135 @@
+{% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
+
+{% block title %}
+<article class="page-title">
+    
+    <section class="title">
+        <h1><span class="text-color">{{ ez_field_value(content, 'title') }}</span></h1>
+    </section> 
+
+    <!-- .breadcrumbs start -->
+    <ul class="breadcrumbs">
+        <li>
+            vous êtes ici:
+        </li>
+        <li class="home-icon">
+            <a href="/">/</a>
+        </li>
+        <li>
+            <a href="/portfolio">Portfolio /</a>
+        </li>
+        <li class="active">
+            <a href="#">{{ ez_field_value(content, 'titre_court') }}</a>
+        </li>
+    </ul>
+
+</article> 
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+    
+    {# IMAGE #}
+    <article class="grid_8">
+        <div id="slider" class="nivoSlider portfolio-slider">
+            {% set imageAlias = ez_image_alias( content.getField( 'image' ), content.versionInfo, 'original' ) %}
+            <img src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="{{ content.getField( 'image' ).value.alternativeText }}" />     
+        </div><!-- .nivoSlider end -->
+
+    </article>
+
+    <article class="grid_4 portfolio-info">
+
+        {# CHIFFRES CLES #}
+        <div class="section-title">
+            <h5>Chiffres clés</h5>
+            <ul class="links">
+                <li class="arrow-prev">
+                    <a href="#"></a>
+                </li>
+
+                <li class="portfolio-grid">
+                    <a href="portfolio3.html"></a>
+                </li>
+
+                <li class="arrow-next">
+                    <a href="#"></a>
+                </li>
+            </ul>
+
+        </div>
+            
+        <ul class="arrow-list">
+            <li>Client : <strong>{{ ez_render_field(content, 'client') }}</strong></li>
+            <li>Année : <strong>{{ ez_field_value(content, 'annee') }}</strong></li>
+            <li>Durée : <strong>{{ ez_field_value(content, 'duree') }}</strong></li>
+            {% if not ez_is_field_empty(content, 'budget') %}
+            <li>Budget : <strong>{{ ez_render_field(content, 'budget') }} &euro;</strong></li>
+            {% endif %}
+        </ul>
+
+        <br />
+
+        {# TAGS TECHNO #}
+        <ul class="aside_widgets">
+
+            <li class="widget widget_tag_cloud">
+                <div class="title">
+                    <h5>Technos</h5>
+                </div>
+                <div class="tagcloud">
+                {% for techno in technos %}
+                    <a href="#">{{ techno }}</a>
+                {% endfor %}
+                </div>
+            </li><!-- .widget_tag_cloud end -->
+
+        </ul><!-- .aside_widgets end -->
+        
+        {# BOUTON VOIR LE SITE #}        
+        {% if not ez_is_field_empty(content, 'url') %}
+        <a href="{{ ez_field_value(content, 'url') }}" class="btn-medium" target="_blank">
+            <span>Voir le site</span>
+        </a>
+        {% endif %}
+    </article>
+
+    {# CONTENU TEXTE #}
+    <div class="grid_8 projet">
+
+        {% if not ez_is_field_empty(content, 'mission') %}
+        <h4>Le projet</h4>
+        {{ ez_render_field(content, 'mission') }}
+        <br />
+        {% endif %}
+
+        {% if not ez_is_field_empty(content, 'enjeux') %}
+        <h4>Enjeux et objectifs</h4>
+        {{ ez_render_field(content, 'enjeux') }}
+        <br />
+        {% endif %}
+
+        {% if not ez_is_field_empty(content, 'contenu') %}
+        <h4>Description</h4>
+        {{ ez_render_field(content, 'contenu') }}
+        <br />
+        {% endif %}
+
+        {% if not ez_is_field_empty(content, 'resultats') %}
+        <h4>Résultats</h4>
+        {{ ez_render_field(content, 'resultats') }}
+        {% endif %}
+    </div>
+
+        
+</div>
+        
+{# CONTENU TEXTE #}
+<div class="container_12">
+    
+
+
+</div>
+    
+
+{% endblock %}

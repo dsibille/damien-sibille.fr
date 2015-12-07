@@ -1,0 +1,49 @@
+#This ezpublish.system preamble states the context these rules apply in
+ezpublish:
+    system:
+        # The siteaccess
+        ezdemo_site_clean_user:
+            field_templates:
+                - { template: SibilleEcommerceBundle::content_fields.html.twig, priority: 10}
+            location_view:
+                # Type of the view. 'full' is when an object represents the whole page
+                full:
+                    homepage:
+                        controller: SibilleEcommerceBundle:Default:index
+                        template: SibilleEcommerceBundle:Default:index.html.twig
+                        match:
+                            Identifier\ContentType: homepage
+                    services:
+                        controller: SibilleEcommerceBundle:Service:index
+                        template: SibilleEcommerceBundle:full:services.html.twig
+                        match:
+                            Id\Location: 72
+                    portfolio:
+                        controller: SibilleEcommerceBundle:Portfolio:index
+                        template: SibilleEcommerceBundle:full:portfolio.html.twig
+                        match:
+                            Id\Location: 73
+                    blog:
+                        controller: SibilleEcommerceBundle:Blog:index
+                        template: SibilleEcommerceBundle:full:blog.html.twig
+                        match:
+                            Id\Location: 62
+                    projet:
+                        controller: SibilleEcommerceBundle:Portfolio:viewLocation
+                        template: SibilleEcommerceBundle:full:projet.html.twig
+                        match:
+                            Identifier\ContentType: projet
+                line:
+                    service:
+                        template: SibilleEcommerceBundle:line:service.html.twig
+                        match:
+                            Identifier\ContentType: service
+                    projet:
+                        template: SibilleEcommerceBundle:line:projet.html.twig
+                        match:
+                            Identifier\ContentType: projet
+                    article:
+                        template: SibilleEcommerceBundle:line:article.html.twig
+                        match:
+                            Identifier\ContentType: article
+ 

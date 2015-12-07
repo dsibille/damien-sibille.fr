@@ -1,0 +1,78 @@
+{% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
+
+{% block title %}
+<article class="page-title">
+    
+    <section class="title">
+        <h1><span class="text-color">{{ ez_field_value(content, 'title') }}</span> de mes réalisations</h1>
+    </section> 
+
+    <!-- .breadcrumbs start -->
+    <ul class="breadcrumbs">
+        <li>
+            vous êtes ici:
+        </li>
+        <li class="home-icon">
+            <a href="/">/</a>
+        </li>
+        <li class="active">
+            <a href="#">{{ ez_field_value(content, 'title') }}</a>
+        </li>
+    </ul><!-- .breadcrumbs end -->
+
+</article> <!-- .page-title end -->
+{% endblock %}
+
+{% block content %}
+    
+{# FILTRE #}
+<!--<div class="container_12">
+    <section class="grid_12 portfolio-filter-container">
+        <ul id="portfolio-filter">
+            <li class="active"><a class="all" href="#">All</a>/</li>
+            <li><a class="photography" href="#">Photography</a>/</li>
+            <li><a class="webdesign" href="#">Web Design</a>/</li>
+            <li><a class="graphicdesign" href="#">Graphic design</a>/</li>
+            <li><a class="motiongraphics" href="#">Motion Graphics</a></li>
+        </ul>
+    </section>
+</div>-->
+
+<!-- .container_12 start -->
+<section class="container_12">
+
+    {# LISTE DES PROJETS #}
+    <ul id="filter-item">  
+        {% for projet in projets %}
+        {% set largeur = '300' %}
+        <li data-id="id-1" class="grid_4"  data-alpha="photography">
+        {{ render( controller( 'ez_content:viewLocation', 
+            {'locationId': projet.contentInfo.mainLocationId, 'viewType': 'line', params: {'largeur': largeur} } ) ) 
+        }}
+        </li>
+        {% if( loop.index % 3 == 0 ) %}
+        <div class="clearfix"></div>
+        {% endif %}
+        {% endfor %}
+    </ul><!-- portfolio items end -->
+
+    {# PAGINATION #}
+    <!--<ul class="grid_12 clearfix">
+        <li class="pagination portfolio-pagination">
+            <ul>
+                <li class="arrow-prev">
+                    <a href="#"></a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li class="arrow-next">
+                    <a href="#"></a>
+                </li>
+            </ul>
+        </li>
+    </ul>-->
+
+</section>
+    
+{% endblock %}

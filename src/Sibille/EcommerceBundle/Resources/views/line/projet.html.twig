@@ -1,0 +1,32 @@
+{# empty Twig template #}
+<figure class="portfolio">
+    <a class="portfolio-image" href="{{ path( "ez_urlalias", {"locationId": content.versionInfo.contentInfo.mainLocationId} )|lower }}">
+        {% set imageAlias = ez_image_alias( content.getField( 'image' ), content.versionInfo, 'original' ) %}
+        <img src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="portfolio" width="{{ largeur }}" />     
+    </a>
+
+    <figcaption>
+        <div class="caption-title">
+            <p class="title">
+                {% if ez_is_field_empty( content, 'titre_court' ) %}
+                {{ ez_field_value(content, 'title') }}
+                {% else %}
+                {{ ez_field_value(content, 'titre_court') }}
+                {% endif %}
+            </p>
+        </div>
+
+
+        <ul class="caption-hover">
+            <li class="portfolio-zoom">
+                <a href="{{ asset( imageAlias.uri, absolute=true ) }}" 
+                   data-gal="prettyPhoto[pp_gallery]">zoom
+                </a>
+            </li>
+
+            <li class="portfolio-single">
+                <a href="{{ path( "ez_urlalias", {"locationId": content.versionInfo.contentInfo.mainLocationId} )|lower }}">single</a>
+            </li>
+        </ul>
+    </figcaption>
+</figure>

@@ -1,0 +1,66 @@
+{# TEMPLATE ARTICLE #}
+<li class="blog-post format-standard clearfix">
+
+    {# DATE DE PUBLICATION #}
+    <section class="post-info">
+        <div class="post-date">
+            <span class="date-big">{{ ez_field_value(content, 'publish_date')|date('d') }}</span>
+            <span>{{ ez_field_value(content, 'publish_date')|date('M Y') }}</span>
+        </div>
+
+        <div class="post-category">
+            <span class="category-text"></span>
+        </div>
+
+    </section>
+
+    {# TITRE, AUTEUR, TAGS ET INTRO #}
+    <article class="post-body">
+
+        <div class="title-meta">
+            <a href="blog-single.html">
+                <h1>{{ ez_field_value(content, 'title') }}</h1>
+            </a>
+
+            <ul class="meta">
+                <li>
+                    <span>Par :</span>
+                    {{ ez_field_value(content, 'author') }}
+                </li>
+                
+                <!--
+                <li>
+                    <a href="">4 comments</a>
+                </li>
+
+                <li class="meta-tags">
+                    <span>Tags:</span>
+                    <ul>
+                        <li>
+                            <a href="">design,</a>
+                        </li>
+
+                        <li>
+                            <a href="">print,</a>
+                        </li>
+
+                        <li>
+                            <a href="">text,</a>
+                        </li>
+
+                        <li>
+                            <a href="">psd,</a>
+                        </li>
+
+                        <li>
+                            <a href="">responsive</a>
+                        </li>
+                    </ul>
+                </li>-->
+            </ul>
+        </div>
+
+        {{ ez_render_field(content, 'intro') }}
+
+    </article>
+</li>

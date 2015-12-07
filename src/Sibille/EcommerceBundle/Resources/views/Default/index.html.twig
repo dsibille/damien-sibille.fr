@@ -1,0 +1,142 @@
+{% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
+
+{# TITLE #}
+{% block title %}
+<article class="page-title home">
+    <section class="title">
+        <h1>{{ ez_render_field(content, 'slogan') }}</h1>
+    </section> 
+</article> 
+{% endblock %}
+
+{# SLIDER #}
+{% block slider %}
+<article class="slider-wrapper">
+    <div id="slider" class="nivoSlider home-slider">
+    {% for slide in slides %}
+        {% set imageAlias = ez_image_alias( slide.getField( 'image' ), slide.versionInfo, 'original' ) %}
+        <img src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="slider" title="#htmlcaption{{ loop.index }}"/>     
+    {% endfor %}
+    </div>
+
+    {% for slide in slides %}
+    <div id="htmlcaption{{ loop.index }}">
+        <h1>{{ slide.getField( 'image' ).value.alternativeText }}</h1>
+    </div>
+    {% endfor %}
+</article>
+{% endblock %}
+
+{% block content %}
+
+<section class="container_12">
+
+    {# SERVICES #}
+    {% for service in services %}
+        {% set class = '' %}
+        {{ render( controller( 'ez_content:viewLocation', 
+            {'locationId': service.contentInfo.mainLocationId, 'viewType': 'line', params: {'class': class} } ) ) 
+        }}
+    {% endfor %}
+    
+    {# DERNIERS PROJETS #}
+    <article class="grid_12 portfolio-carousel clearfix">
+
+        <section class="section-title">
+            <h4>Derniers projets</h4>
+            <ul class="portfolio-carousel-navigation">
+                <li>
+                    <a class="portfolio-carousel-nav prev" href="#"></a> 
+                </li>
+                <li class="portfolio-grid">
+                    <a href="/portfolio"></a>
+                </li>
+                <li>
+                    <a class="portfolio-carousel-nav next" href="#"></a> 
+                </li>
+            </ul>  
+        </section>
+
+        <ul id="portfolio-carousel" class="carousel-li">
+            {% for projet in projets %}
+            {% set largeur = '220' %}
+            <li>
+            {{ render( controller( 'ez_content:viewLocation', 
+                {'locationId': projet.contentInfo.mainLocationId, 'viewType': 'line', params: {'largeur': largeur} } ) ) 
+            }}
+            </li>
+            {% endfor %}
+        </ul>
+    </article>
+
+    {# DERNIERS POSTS #}
+    <article class="grid_8">
+        <section class="section-title">
+            <h4>Derniers posts</h4>
+        </section>
+
+        {# LISTE DES POSTS #}
+       <ul class="grid_4 tabs vertical blog alpha">
+            {% for article in articles %}
+            <li{% if loop.index == 1 %} class="active"{% endif %}>
+                <a href="#tab{{  loop.index }}">
+                    <div class="post-date">
+                        <span class="date-big">{{ ez_field_value(article, 'publish_date')|date('d') }}</span>
+                        <span>{{ ez_field_value(article, 'publish_date')|date('M Y') }}</span>
+                    </div><!-- post-date end -->
+
+                    <!-- .title-meta start -->
+                    <div class="title-meta">
+                        <h4>{{ ez_field_value(article, 'title') }}</h4>
+                        <span>Par : {{ ez_field_value(article, 'author') }}</span>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>        
+
+        {# MISE EN AVANT / POST ACTIF #}
+        <section class="grid_4 omega tab-content-wrap vertical">
+
+            {% for article in articles %}
+            <article id="tab{{  loop.index }}" class="tab-content blog-post format-standard clearfix">                  
+                <a href="blog-single.html">
+                    <img src="img/blog/blog-small-1.jpg" alt="blog post with image" />
+                </a>
+
+                <section class="post-info">
+                    <!-- .post-date start -->
+                    <div class="post-date">
+                        <span class="date-big">{{ ez_field_value(article, 'publish_date')|date('d') }}</span>
+                        <span>{{ ez_field_value(article, 'publish_date')|date('M Y') }}</span>
+                    </div><!-- post-date end -->
+
+                    <!-- .title-meta start -->
+                    <div class="title-meta">
+                        <a href="blog-single.html">
+                            <h4>{{ ez_field_value(article, 'title') }}</h4>
+                        </a>
+
+                        <ul class="meta">
+                            <li>
+                                <span>Par :</span>
+                                <a href="">{{ ez_field_value(article, 'author') }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </section><!-- .post-info end -->  
+
+                <!-- .post-body start -->
+                <article class="post-body">
+                    {{ ez_render_field(article, 'intro') }}
+                    <a href="{{ path( "ez_urlalias", {"locationId": article.versionInfo.contentInfo.mainLocationId} )|lower }}" class="read-more">[...]</a>
+                </article>
+            </article><!-- .blog-post end -->    
+            {% endfor %}
+        </section>
+
+    </article>
+            
+</section>
+    
+{% endblock %}

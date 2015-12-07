@@ -1,0 +1,16 @@
+#nav-container{
+    height: 39px;
+}
+
+#search{
+    height: 39px;
+}
+
+#search::after{
+    border-top-width: 39px;
+}
+
+.error-page .btn-medium span{
+    width: 90px;
+    display: block;
+}

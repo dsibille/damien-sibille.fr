@@ -1,0 +1,11 @@
+parameters: 
+    ezpublish_legacy.default.view_default_layout: 'SibilleEcommerceBundle:Default:index.html.twig'
+    secret: e19650d5e3f7402976cd11f38d19f7d162c50445
+    locale_fallback: en
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true 

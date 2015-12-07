@@ -1,0 +1,75 @@
+{% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
+
+{% block title %}
+<article class="page-title">
+    
+    <section class="title">
+        <h1>Consultez mes <span class="text-color">{{ ez_field_value(content, 'title')|lower }}</span></h1>
+    </section> 
+
+    <!-- .breadcrumbs start -->
+    <ul class="breadcrumbs">
+        <li>
+            vous êtes ici:
+        </li>
+        <li class="home-icon">
+            <a href="/">/</a>
+        </li>
+        <li class="active">
+            <a href="#">{{ ez_field_value(content, 'title') }}</a>
+        </li>
+    </ul>
+
+</article> 
+{% endblock %}
+
+{% block content %}
+<section class="container_12">
+
+    {# CONTENU TEXTE #}
+    <article class="grid_12">
+    {{ ez_render_field(content, 'contenu') }}
+    </article>
+
+    {# LISTE DES SERVICES #}
+    {% for service in services %}
+        {% set class = 'simple' %}
+        {{ render( controller( 'ez_content:viewLocation', 
+            {'locationId': service.contentInfo.mainLocationId, 'viewType': 'line', params: {'class': class} } ) ) 
+        }}
+        
+        {% if( loop.index % 3 == 0 ) %}
+        <div class="clearfix"></div>
+        {% endif %}
+       
+    {% endfor %}
+
+    <!-- .grid_12 start 
+    <article class="grid_12 clients clearfix">
+        <section class="section-title">
+            <h4>our clients</h4>
+
+            <ul class="clients-navigation">
+                <li>
+                    <a class="clients-nav prev" href="#"></a> 
+                </li>
+
+                <li>
+                    <a class="clients-nav next" href="#"></a> 
+                </li>
+            </ul>  
+        </section>
+
+        <ul id="client-carousel" class="carousel-li">
+            <li>
+                <a href="">
+                    <img class="greyScale" src="img/client-1.png" alt="client logo" />
+                </a>
+            </li>
+
+        </ul>
+
+    </article> -->                   
+
+</section>
+{% endblock %}

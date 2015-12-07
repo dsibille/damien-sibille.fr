@@ -1,0 +1,15 @@
+input.search-bkg{
+    padding-top: 9px;
+}
+
+.tabs.vertical.blog .title-meta h4{
+    font-size: 14px;
+}
+
+.social-feed .img-overlay{
+    filter: alpha(opacity=0);
+}
+
+.social-feed .img-overlay:hover{
+    filter: alpha(opacity=70);
+}

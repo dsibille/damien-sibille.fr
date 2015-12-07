@@ -1,0 +1,103 @@
+{% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
+
+{% block title %}
+<article class="page-title">
+    
+    <section class="title">
+        <h1><span class="text-color">{{ ez_field_value(content, 'title') }}</span></h1>
+    </section> 
+
+    <!-- .breadcrumbs start -->
+    <ul class="breadcrumbs">
+        <li>
+            vous êtes ici:
+        </li>
+        <li class="home-icon">
+            <a href="/">/</a>
+        </li>
+        <li class="active">
+            <a href="#">{{ ez_field_value(content, 'title') }}</a>
+        </li>
+    </ul><!-- .breadcrumbs end -->
+
+</article> <!-- .page-title end -->
+{% endblock %}
+
+{% block content %}
+    
+<div class="container_12">
+
+    <!-- .grid_8 start -->
+    <ul class="grid_8 blog-posts blog-posts2">
+
+        {# LISTE DES ARTICLES #}
+        {% for article in articles %}
+        {{ render( controller( 'ez_content:viewLocation', 
+            {'locationId': article.contentInfo.mainLocationId, 'viewType': 'line', params: {} } ) ) 
+        }}
+        {% endfor %}
+        
+        {# PAGINATION #}
+        <li class="pagination clearfix">
+            <ul>
+                <li class="arrow-prev">
+                    <a href="#"></a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+
+                <li>
+                    <a href="#">2</a>
+                </li>
+
+                <li>
+                    <a href="#">3</a>
+                </li>
+
+                <li>
+                    <a href="#">4</a>
+                </li>
+
+                <li>
+                    <a href="#">5</a>
+                </li>
+
+                <!-- arrow left start -->
+                <li class="arrow-next">
+                    <a href="#"></a>
+                </li><!-- arrow left end -->
+
+            </ul>
+        </li><!-- .pagination end -->
+
+    </ul><!-- .grid_8 end -->
+
+    <!-- .aside-right start -->
+    <aside class="grid_4 aside-right">
+
+        <!-- .widget start -->
+        <ul class="aside_widgets">
+
+            <!-- .widget_categories start -->
+            <li class="widget widget_categories">
+                <div class="title">
+                    <h5>Catégories</h5>
+                </div>
+
+                <ul>
+                    <li><a href="blog-single.html">Design and development</a></li>
+                    <li><a href="blog-single.html">Wordpress themes</a></li>
+                    <li><a href="blog-single.html">Company news</a></li>
+                    <li><a href="blog-single.html">Print design</a></li>
+                    <li><a href="blog-single.html">The best of photography</a></li>
+                    <li><a href="blog-single.html">Learning jQuery</a></li>
+                </ul>  
+            </li><!-- .widget_recent_entries end -->
+
+        </ul><!-- .aside_widgets end -->
+    </aside><!-- .aside-right end -->
+
+</div><!-- .container_12 end -->
+    
+{% endblock %}

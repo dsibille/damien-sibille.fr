@@ -1,0 +1,3 @@
+sibille_ecommerce_homepage:
+    path:     /
+    defaults: { _controller: SibilleEcommerceBundle:Default:index }

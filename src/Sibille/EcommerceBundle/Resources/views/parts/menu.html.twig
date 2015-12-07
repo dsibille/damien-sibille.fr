@@ -1,0 +1,24 @@
+{# empty Twig template #}
+<nav id="nav">
+    <ul>
+        <li class="home active">
+            <a href="{{ path( ezpublish.rootLocation ) }}">Home</a>
+        </li>
+        {% for item in menuItems %}
+        <li>
+            <a href="{{ path( "ez_urlalias", {"locationId": item.versionInfo.contentInfo.mainLocationId} )|lower }}">{{ ez_render_field( item, "title" ) }}</a>
+        </li>
+        {% endfor %}
+    </ul> 
+</nav><!-- main navigation end -->
+
+<!-- responsive navigation start -->
+<select id="nav-responsive">
+    <option selected="" value="">MENU...</option>
+    <option value="{{ path( ezpublish.rootLocation ) }}">Home</option>
+    {% for item in menuItems %}
+    <option value="{{ path( "ez_urlalias", {"locationId": item.versionInfo.contentInfo.mainLocationId} )|lower }}">{{ ez_render_field( item, "title" ) }}</option>
+    {% endfor %}
+
+</select> <!-- responsive navigation end -->
+

@@ -1,0 +1,183 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        {% if content is defined and title is not defined %}
+            {% set title = ez_content_name( content ) %}
+        {% endif %}
+        <title>{{ title|default( 'Home' ) }}</title>
+        <meta name="description" content="Creative Multipurpose HTML5 Theme">
+        <meta name="author" content="pixel-industry">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
+
+
+        <!-- stylesheets -->
+        {% block stylesheets %}
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+        
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
+        <link rel="stylesheet" title="activestyle" href="{{ asset('css/yellow.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('pixons/style.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('service-icons/style.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/nivo-slider.css') }}" type="text/css" />        
+        <link rel="stylesheet" href="{{ asset('css/prettyPhoto.css') }}" type="text/css" media="screen" />        
+        
+        <!--[if (gte IE 9)]>
+            <link rel="stylesheet" href="{{ asset('css/ie.css') }}" media="screen" />
+        <![endif]-->
+        
+        <!--[if IE 8]>
+            <link rel="stylesheet" href="{{ asset('css/ie8.css') }}" media="screen" />
+        <![endif]-->
+        {% endblock %}
+
+        {% block javascript %}
+        <!--[if lt IE 9]>
+            <script src="{{ asset('js/html5shiv.js') }}"></script>
+        <![endif]-->
+        {% endblock %}
+
+    </head>
+
+    <body class="patt1">
+
+        <!-- #page-wrap start -->
+        <div id="page-wrap">
+
+            <!-- header start -->
+            <header id="header" class="clearfix">
+
+                <!-- logo start -->
+                <section id="logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="logo"/>
+                    </a>
+                </section>
+
+                <!-- #nav-ontainer start -->
+                <section id="nav-container">
+
+                    <!-- main navigation start  -->
+                    {% block menu %}
+                    {{ render(controller('SibilleEcommerceBundle:Menu:index')) }}
+                    {% endblock %}
+
+                    <!-- search start -->
+                    <section id="search">
+                        <form action="#" method="get">
+                            <input class="search-submit" type="submit" />
+                            <input id="s" class="search-bkg" name="s" type="text" placeholder="Type and hit enter..." />
+                        </form>
+                    </section>
+                </section>
+            </header>
+
+
+            <!-- .page-title start -->
+            {% block title %}
+            {% endblock %}
+
+            <!-- slider -->
+            {% block slider %}
+            {% endblock %}
+
+            <!-- #content-wrapper start -->
+            <div id="content-wrapper">
+            {% block content %}
+            {% endblock %}
+            </div>
+            
+            <!-- #footer-wrapper start -->
+            <div id="footer-wrapper" class="clearfix">
+            {% block footer %}
+            {% include "SibilleEcommerceBundle:parts:footer.html.twig" %}
+            {% endblock %}
+            </div>           
+            
+        </div><!-- #page-wrap end -->
+
+        <!-- scripts -->
+        {% block script %}
+        <script  src="{{ asset('js/jquery-1.8.3.js') }}"></script> <!-- jQuery library -->   
+        <script  src="{{ asset('js/jquery.placeholder.min.js') }}"></script><!-- jQuery placeholder fix for old browsers -->
+        <script  src="{{ asset('js/socialstream.jquery.js') }}"></script> <!-- Social Networks Feeds -->
+        <script  src="{{ asset('js/jquery.tweetscroll.js') }}"></script> <!-- jQuery tweetscroll plugin -->
+        <script  src="{{ asset('js/jquery.carouFredSel-6.0.0-packed.js') }}"></script><!-- CarouFredSel carousel plugin -->
+        <script  src="{{ asset('js/grayScale.js') }}"></script><!-- image grayscale to color effect -->
+        <script  src="{{ asset('js/portfolio.js') }}"></script> <!-- portfolio custom options -->
+        <script  src="{{ asset('js/jquery.prettyPhoto.js') }}"></script> <!-- prettyPhoto lightbox -->
+        <script  src="{{ asset('js/jquery.nivo.slider.js') }}"></script><!-- nivo slider -->
+        <script  src="{{ asset('js/jquery.touchSwipe-1.2.5.js') }}"></script><!-- support for touch swipe on mobile devices -->
+        <script  src="{{ asset('js/include.js') }}"></script> <!-- jQuery custom options -->
+        {% endblock %}
+
+        <script>
+            /* <![CDATA[ */
+            /* main nivo slider */
+            $(window).load(function() {
+                $('#slider').nivoSlider({
+                    controlNav: false
+                });
+            });
+            
+            /* portfolio SCROLL */
+            $("#portfolio-carousel").carouFredSel({
+                items: 4,
+                prev: '.portfolio-carousel-nav.prev',
+                next: '.portfolio-carousel-nav.next',
+                auto: false,
+                scroll:1,
+                
+                swipe: {
+                    ontouch : true,
+                    onMouse: true
+                }
+            });
+            
+            /* GRAYSCALE FUNCTION FOR CLIENT'S LOGO*/
+            $(function() {
+                // fade in the grayscaled images to avoid visual jump
+                $('.greyScale').hide().fadeIn(200);
+            });
+            // user window.load to ensure images have been loaded
+            $(window).load(function () {
+                $('.greyScale').greyScale({
+                    // call the plugin with non-defult fadeTime (default: 400ms)
+                    fadeTime: 300,
+                    reverse: false
+                });
+            });
+            
+            
+            /* CLIENTS SCROLL */
+            $('#client-carousel').carouFredSel({
+                items: 5,
+                prev: '.clients-nav.prev',
+                next: '.clients-nav.next',
+                auto: false,
+                scroll: 1,
+                swipe: {
+                    ontouch : true,
+                    onMouse: true
+                }
+            })
+            
+            /* TWEETSCROLL */
+            $('.tweets-list-container').tweetscroll({
+                username: 'pixel_industry', 
+                time: true, 
+                limit: 11, 
+                replies: true, 
+                position: 'append',
+                date_format: 'style2',
+                animation: 'fade',
+                visible_tweets: 1
+            });
+            /* ]]> */
+        </script>
+    </body>
+
+
+</html>

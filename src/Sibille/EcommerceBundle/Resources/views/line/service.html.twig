@@ -1,0 +1,23 @@
+{# empty Twig template #}
+{% block content %}
+<section class="grid_4 service-box {{ class }}">
+    <div class="service-info">
+
+        <div class="service-info-icon">
+            
+            <i class="service-icon {{ ez_field_value(content, 'icone') }}"></i>
+        </div>
+
+        <div class="service-info-title">
+            <a href="/services">
+                <h6>{{ ez_field_value(content, 'title') }}</h6>
+            </a>
+
+            <span>{{ ez_field_value(content, 'sous_titre') }}</span>  
+        </div>
+    </div>
+
+    {{ ez_render_field(content, 'contenu') }}
+
+</section>
+{% endblock %}
