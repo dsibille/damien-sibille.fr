@@ -17,7 +17,7 @@ class BlogController extends Controller
         $query = new Query();
         $query->criterion = new Criterion\LogicalAnd(
             array(
-                new Criterion\ParentLocationId( 62 )
+                new Criterion\ContentTypeIdentifier( 'article' )
             )
         );
         $query->sortClauses = array( new SortClause\DatePublished( Query::SORT_DESC ) );
@@ -29,11 +29,33 @@ class BlogController extends Controller
             $articles[] = $hit->valueObject;
         }
                 
+        $contentTypeService = $this->getRepository()->getContentTypeService();
+        $contentType = $contentTypeService->loadContentTypeByIdentifier( 'article' );
+        $categories = $contentType->getFieldDefinition('category')->fieldSettings['options'];
+
         return $this->render(
                 'SibilleEcommerceBundle:full:blog.html.twig',
-                array('content' => $content, 'articles' => $articles)
+                array('content' => $content, 'articles' => $articles, 'categories' => $categories)
         );         
     }
+
+    public function viewLocationAction( $locationId, $viewType, $layout = false, array $params = array() )
+    {
+        // récupération du projet en cours
+        $repository = $this->getRepository();
+        $location = $repository->getLocationService()->loadLocation( $locationId );
+        $content = $repository->getContentService()->loadContentByContentInfo( $location->getContentInfo() );
+
+        // récupération des mots clés dans le champ techno
+        $contentTypeService = $this->getRepository()->getContentTypeService();
+        $contentType = $contentTypeService->loadContentTypeByIdentifier( 'article' );
+        $categories = $contentType->getFieldDefinition('category')->fieldSettings['options'];
+          
+        $params += array( 'categories' => $categories );
+        $response = $this->get( 'ez_content' )->viewLocation( $locationId, $viewType, $layout, $params );
+    
+        return $response;
+    }   
     
     
 }

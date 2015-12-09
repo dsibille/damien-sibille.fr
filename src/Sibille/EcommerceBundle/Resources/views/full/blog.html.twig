@@ -84,14 +84,10 @@
                 <div class="title">
                     <h5>Catégories</h5>
                 </div>
-
                 <ul>
-                    <li><a href="blog-single.html">Design and development</a></li>
-                    <li><a href="blog-single.html">Wordpress themes</a></li>
-                    <li><a href="blog-single.html">Company news</a></li>
-                    <li><a href="blog-single.html">Print design</a></li>
-                    <li><a href="blog-single.html">The best of photography</a></li>
-                    <li><a href="blog-single.html">Learning jQuery</a></li>
+                    {% for categorie in categories %}
+                    <li><a href="">{{ categorie }}</a></li>
+                    {% endfor %}
                 </ul>  
             </li><!-- .widget_recent_entries end -->
 
@@ -100,4 +96,10 @@
 
 </div><!-- .container_12 end -->
     
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    <script  src="{{ asset('js/jquery.nivo.slider.js') }}"></script><!-- nivo slider -->
+    <script  src="{{ asset('js/jplayer/jquery.jplayer.min.js') }}"></script> <!-- prettyPhoto lightbox -->
 {% endblock %}

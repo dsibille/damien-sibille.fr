@@ -17,10 +17,10 @@ class PortfolioController extends Controller
         $query = new Query();
         $query->criterion = new Criterion\LogicalAnd(
             array(
-                new Criterion\ParentLocationId( 73 )
+                new Criterion\ContentTypeIdentifier( 'projet' )
             )
         );
-        $query->sortClauses = array( new SortClause\LocationPriority( Query::SORT_ASC ) );
+        $query->sortClauses = array( new SortClause\Field('projet', 'annee', Query::SORT_DESC, 'fre-FR') );
         
         $result = $this->getRepository()->getSearchService()->findContent($query);
         $projets = array();
@@ -29,9 +29,13 @@ class PortfolioController extends Controller
             $projets[] = $hit->valueObject;
         }
                 
+        $contentTypeService = $this->getRepository()->getContentTypeService();
+        $contentType = $contentTypeService->loadContentTypeByIdentifier( 'projet' );
+        $categories = $contentType->getFieldDefinition('categorie')->fieldSettings['options'];
+
         return $this->render(
                 'SibilleEcommerceBundle:full:portfolio.html.twig',
-                array('content' => $content, 'projets' => $projets)
+                array('content' => $content, 'projets' => $projets, 'categories' => $categories)
         );         
     }
     

@@ -33,6 +33,11 @@ ezpublish:
                         template: SibilleEcommerceBundle:full:projet.html.twig
                         match:
                             Identifier\ContentType: projet
+                    article:
+                        controller: SibilleEcommerceBundle:Blog:viewLocation
+                        template: SibilleEcommerceBundle:full:article.html.twig
+                        match:
+                            Identifier\ContentType: article
                 line:
                     service:
                         template: SibilleEcommerceBundle:line:service.html.twig

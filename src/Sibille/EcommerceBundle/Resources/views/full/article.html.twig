@@ -1,0 +1,297 @@
+{% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
+
+{% block title %}
+<article class="page-title">
+    
+    <section class="title">
+        <h1>Catégorie : <span class="text-color">{{ ez_render_field(content, 'category') }}</span></h1>
+    </section> 
+
+    <!-- .breadcrumbs start -->
+    <ul class="breadcrumbs">
+        <li>
+            vous êtes ici:
+        </li>
+        <li class="home-icon">
+            <a href="/">/</a>
+        </li>
+        <li class="active">
+            <a href="/portfolio">Blog</a>
+        </li>
+    </ul>
+
+</article> 
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+
+    <!-- .grid_8 start -->
+    <article class="grid_8 blog-posts blog-post-single">
+
+        <!-- .blog-post start -->
+        <article class="blog-post format-standard clearfix">      
+            {% if not ez_is_field_empty(content, 'image') %}
+            {% set imageAlias = ez_image_alias( content.getField( 'image' ), content.versionInfo, 'original' ) %}
+            <img src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="{{ content.getField( 'image' ).value.alternativeText }}" />     
+            {% endif %}
+            <!-- .post-info start -->
+            <section class="post-info">
+                <!-- .post-date start -->
+                <div class="post-date">
+                    <span class="date-big">{{ ez_field_value(content, 'publish_date')|date('d') }}</span>
+                    <span>{{ ez_field_value(content, 'publish_date')|date('M Y') }}</span>
+                </div>
+
+                <!-- .post-category start -->
+                <div class="post-category">
+                    <span class="category-text"></span>
+                </div>
+
+                <!-- .title-meta start -->
+                <div class="title-meta">
+                    <a href="blog-single.html">
+                        <h2>{{ ez_field_value(content, 'title') }}</h2>
+                    </a>
+                </div>
+            </section>
+
+            <!-- .post-body start -->
+            <article class="post-body blog">
+            {{ ez_render_field(content, 'body') }}
+            </article>
+        </article>
+
+        <!-- .post-author start -->
+        <article class="post-author">
+            <div class="section-title">
+                <h5>A propos de l'auteur</h5>
+            </div>
+
+            <section class="post-author-body">
+                <img src="{{ asset('img/blog/photo-damien-sibille.jpg') }}" height="110" alt="Responsable E-Commerce Damien SIBILLE" />
+
+                <div class="post-author-about">
+                    <h6>{{ ez_field_value(content, 'author') }}</h6>
+
+                    <p>
+                        Passionné par le web, j'évolue comme Responsable E-Commerce 
+                        depuis près de 10 ans avec une double compétence technique et webmarketing.   
+                        J'aime contribuer activement à la <i>digitalisation</i> des entreprises.
+                    </p>
+                </div>
+            </section>
+        </article><!-- post-author end -->
+
+        <div class="divider"></div>
+
+        <!-- .post-comments -->
+        <article class="post-comments">
+            <div class="section-title">
+                <h4>comments (4)</h4>
+            </div>
+
+            <ul class="comments-li">
+                <li> 
+                    <article class="comment">
+                        <div class="avatar">
+
+                            <img src="img/blog/avatar.jpg" alt="author" />
+
+                        </div>
+
+                        <ul class="comment-meta">
+                            <li>
+                                <a href="#" class="author">Mark </a> 
+                            </li>
+
+                            <li>
+                                January 02nd, 2013 at 12:05 am 
+                            </li>
+                        </ul>
+
+                        <div class="comment-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, onsectetuer 
+                                dipiscing elit, sed diam nonummy nibh 
+                                euismod tincidunt ut laoreet dolore 
+                                magna aliquam erat volutpat. 
+                            </p>
+
+                            <a class="comment-reply-link">
+                                reply
+                            </a>
+                        </div>                                        
+                    </article>
+
+                    <!-- second level comment -->
+                    <ul class="child">
+                        <li>
+                            <article class="comment">
+                                <div class="avatar">
+                                    <img src="img/blog/avatar.jpg" alt="author" />
+
+
+                                </div>
+
+                                <ul class="comment-meta">
+                                    <li>
+                                        <a href="#" class="author">Mark </a> 
+                                    </li>
+
+                                    <li>
+                                        January 12th, 2013 at 10:01 am
+                                    </li>
+                                </ul>
+
+                                <div class="comment-body">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, 
+                                        consectetuer adipiscing elit, 
+                                        sed diam nonummy nibh 
+                                        euismod tincidunt ut laoreet 
+                                        dolore magna aliquam erat 
+                                        volutpat. 
+                                    </p>
+
+                                    <a class="comment-reply-link">
+                                        reply
+                                    </a>
+                                </div>                                        
+                            </article>
+
+                            <!-- second level comment -->
+                            <ul class="child">
+                                <li>
+                                    <article class="comment">
+                                        <div class="avatar">
+                                            <img src="img/blog/avatar.jpg" alt="author" />
+
+
+                                        </div>
+
+                                        <ul class="comment-meta">
+                                            <li>
+                                                <a href="#" class="author">Mark </a> 
+                                            </li>
+
+                                            <li>
+                                                January 29th, 2013 at 08:16 am
+                                            </li>
+                                        </ul>
+
+                                        <div class="comment-body">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, 
+                                                consectetuer adipiscing elit, 
+                                                sed diam nonummy nibh 
+                                                euismod tincidunt ut laoreet 
+                                                dolore magna aliquam erat 
+                                                volutpat. 
+                                            </p>
+
+                                            <a class="comment-reply-link">
+                                                reply
+                                            </a>
+                                        </div>                                        
+                                    </article>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li><!-- post comments list item end -->
+
+                <li>
+                    <article class="comment">
+                        <div class="avatar">
+                            <img src="img/blog/avatar.jpg" alt="author" />
+                        </div>
+
+                        <ul class="comment-meta">
+                            <li>
+                                <a href="#" class="author">Mark </a> 
+                            </li>
+
+                            <li>
+                                February 15th, 2013 at 06:56 pm
+                            </li>
+                        </ul>
+
+                        <div class="comment-body">
+                            <p>
+                                Lorem ipsum dolor sit amet, onsectetuer 
+                                dipiscing elit, sed diam nonummy nibh 
+                                euismod tincidunt ut laoreet dolore 
+                                magna aliquam erat volutpat. 
+                            </p>
+
+                            <a class="comment-reply-link">
+                                reply
+                            </a>
+                        </div>                                        
+                    </article>
+                </li>
+            </ul>
+        </article><!-- .post-comments end -->
+
+        <!-- .comment-form start -->
+        <section class="comment-form">
+            <div id="respond">
+                <h5 id="reply-title">Leave a comment</h5>
+
+                <p>
+                    Hey, so you decided to leave a comment! 
+                    That’s great. Just fill in the required 
+                    fields and hit submit. Note that your 
+                    comment will need to be reviewed before 
+                    it’s published.
+                </p>
+
+                <form id="commentform">
+                    <fieldset class="name-container">
+                        <label><span class="text-color">*</span> Name:</label>
+                        <input name="author" id="comment-name" type="text">
+                    </fieldset>
+
+                    <fieldset class="email-container">
+                        <label><span class="text-color">*</span> Email:</label>
+                        <input name="email" id="comment-email" type="email">
+                    </fieldset>
+
+                    <fieldset class="message">
+                        <label><span class="text-color">*</span> Message:</label>
+                        <textarea name="comment" id="comment-message" rows="8"></textarea>
+                    </fieldset>
+                    <input id="comment-reply" type="submit" value="submit">
+
+                </form>
+                <div id="comment-response"></div>
+            </div>
+        </section><!-- .comment-form end -->
+    </article><!-- .grid_8 end -->
+
+
+    <!-- .aside-right start -->
+    <aside class="grid_4 aside-right">
+
+        <!-- .widget start -->
+        <ul class="aside_widgets">
+
+            <!-- .widget_categories start -->
+            <li class="widget widget_categories">
+                <div class="title">
+                    <h5>Catégories</h5>
+                </div>
+                <ul>
+                    {% for categorie in categories %}
+                    <li><a href="">{{ categorie }}</a></li>
+                    {% endfor %}
+                </ul>  
+            </li><!-- .widget_recent_entries end -->
+
+        </ul><!-- .aside_widgets end -->
+    </aside><!-- .aside-right end -->
+    
+</div>
+{% endblock %}
+

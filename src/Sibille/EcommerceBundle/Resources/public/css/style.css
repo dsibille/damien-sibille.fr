@@ -75,10 +75,30 @@ a:focus{ outline: none;}
 ----------------------------------------------------------------------------- */
 div.projet > ul {
     list-style: square;
-    padding-left: 20px !important;
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
     margin-top: 0 !important;
+    padding-left: 20px !important;
+    padding-top: 0 !important;
+}
+div.projet > h5 {
+    margin-top: 11px;
+}
+article.blog > ul {
+    list-style: square;
+    margin-top: 0 !important;
+    padding-left: 20px !important;
+    padding-top: 0 !important;
+}
+article.blog > ol {
+    list-style-type: decimal;
+    margin-top: 0 !important;
+    padding-left: 20px !important;
+    padding-top: 0 !important;
+}
+article.blog > h4  {
+    margin-top: 11px;
+}
+article.blog > h5  {
+    margin-top: 11px;
 }
 
 /* `Container
@@ -725,35 +745,35 @@ h2{
     font: bold 17px 'Open Sans', Arial , sans-serif;
     color: #494949;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 13px;
 }
 
 h3{
     font: bold 16px 'Open Sans', Arial, sans-serif;
     color: #444;
     text-transform: uppercase;
-    margin-bottom: 13px;
+    margin-bottom: 11px;
 }
 
 h4{
     font: bold 15px 'Open Sans', Arial, sans-serif;
     color: #444;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 9px;
 }
 
 h5{
     font: bold 14px 'Open Sans', Arial, sans-serif;
     color: #444;
     text-transform: uppercase;
-    margin-bottom: 11px;
+    margin-bottom: 7px;
 }
 
 h6{
     font: bold 13px 'Open Sans', Arial, sans-serif;
     color: #444;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 p{

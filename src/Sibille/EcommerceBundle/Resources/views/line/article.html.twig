@@ -18,7 +18,7 @@
     <article class="post-body">
 
         <div class="title-meta">
-            <a href="blog-single.html">
+            <a href="{{ path( "ez_urlalias", {"locationId": content.versionInfo.contentInfo.mainLocationId} )|lower }}">
                 <h1>{{ ez_field_value(content, 'title') }}</h1>
             </a>
 

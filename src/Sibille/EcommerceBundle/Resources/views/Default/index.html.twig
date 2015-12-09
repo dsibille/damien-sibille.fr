@@ -100,9 +100,6 @@
 
             {% for article in articles %}
             <article id="tab{{  loop.index }}" class="tab-content blog-post format-standard clearfix">                  
-                <a href="blog-single.html">
-                    <img src="img/blog/blog-small-1.jpg" alt="blog post with image" />
-                </a>
 
                 <section class="post-info">
                     <!-- .post-date start -->
@@ -113,14 +110,14 @@
 
                     <!-- .title-meta start -->
                     <div class="title-meta">
-                        <a href="blog-single.html">
+                        <a href="{{ path( "ez_urlalias", {"locationId": article.versionInfo.contentInfo.mainLocationId} )|lower }}">
                             <h4>{{ ez_field_value(article, 'title') }}</h4>
                         </a>
 
                         <ul class="meta">
                             <li>
                                 <span>Par :</span>
-                                <a href="">{{ ez_field_value(article, 'author') }}</a>
+                                <a href="#">{{ ez_field_value(article, 'author') }}</a>
                             </li>
                         </ul>
                     </div>
@@ -136,7 +133,40 @@
         </section>
 
     </article>
+        
+    {# ATOUTS / COMPETENCES #}
+    <article class="grid_4">
+        <section class="section-title">
+            <h4>Compétences</h4>
+        </section>
+
+         <article class="accordion"> 
+            {% for competence in competences %}
+            <section class="accordion-content-wrapp">
+                <div class="title{% if loop.index == 1 %} active{% endif %}"><a href="#">{{ ez_field_value(competence, 'title') }}</a></div>
+                <div class="content">
+                    {{ ez_render_field(competence, 'contenu') }}
+                </div>
+            </section>
+            {% endfor %}
+        </article><!-- .accordion end -->
+
+        <p class="info">
+            <span class="text-color">N'hésitez plus,</span> faites appel à mes services !
+        </p>
+    </article>
             
 </section>
     
 {% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    <script  src="{{ asset('js/jquery.carouFredSel-6.0.0-packed.js') }}"></script><!-- CarouFredSel carousel plugin -->
+    <script  src="{{ asset('js/grayScale.js') }}"></script><!-- image grayscale to color effect -->
+    <script  src="{{ asset('js/portfolio.js') }}"></script> <!-- portfolio custom options -->
+    <script  src="{{ asset('js/jquery.prettyPhoto.js') }}"></script> <!-- prettyPhoto lightbox -->
+    <script  src="{{ asset('js/jquery.nivo.slider.js') }}"></script><!-- nivo slider -->
+    <script  src="{{ asset('js/jquery.touchSwipe-1.2.5.js') }}"></script><!-- support for touch swipe on mobile devices -->
+{% endblock %}
+

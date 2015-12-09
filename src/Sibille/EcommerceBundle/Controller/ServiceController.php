@@ -17,7 +17,7 @@ class ServiceController extends Controller
         $query = new Query();
         $query->criterion = new Criterion\LogicalAnd(
             array(
-                new Criterion\ParentLocationId( 72 )
+               new Criterion\ContentTypeIdentifier( 'service' )
             )
         );
         $query->sortClauses = array( new SortClause\LocationPriority( Query::SORT_ASC ) );

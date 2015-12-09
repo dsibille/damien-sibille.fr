@@ -19,6 +19,5 @@
     {% for item in menuItems %}
     <option value="{{ path( "ez_urlalias", {"locationId": item.versionInfo.contentInfo.mainLocationId} )|lower }}">{{ ez_render_field( item, "title" ) }}</option>
     {% endfor %}
-
 </select> <!-- responsive navigation end -->
 

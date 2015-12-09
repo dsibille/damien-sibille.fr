@@ -26,17 +26,16 @@
 {% block content %}
     
 {# FILTRE #}
-<!--<div class="container_12">
+<div class="container_12">
     <section class="grid_12 portfolio-filter-container">
         <ul id="portfolio-filter">
-            <li class="active"><a class="all" href="#">All</a>/</li>
-            <li><a class="photography" href="#">Photography</a>/</li>
-            <li><a class="webdesign" href="#">Web Design</a>/</li>
-            <li><a class="graphicdesign" href="#">Graphic design</a>/</li>
-            <li><a class="motiongraphics" href="#">Motion Graphics</a></li>
+            <li class="active"><a class="all" href="#">Tous</a>/</li>
+            {% for categorie in categories %}
+            <li><a class="{{ categorie }}" href="#">{{ categorie }}</a>/</li>
+            {% endfor %}
         </ul>
     </section>
-</div>-->
+</div>
 
 <!-- .container_12 start -->
 <section class="container_12">
@@ -45,7 +44,7 @@
     <ul id="filter-item">  
         {% for projet in projets %}
         {% set largeur = '300' %}
-        <li data-id="id-1" class="grid_4"  data-alpha="photography">
+        <li data-id="id-{{ loop.index }}" class="grid_4"  data-alpha="{{ ez_render_field(projet, 'categorie') }}">
         {{ render( controller( 'ez_content:viewLocation', 
             {'locationId': projet.contentInfo.mainLocationId, 'viewType': 'line', params: {'largeur': largeur} } ) ) 
         }}
@@ -75,4 +74,11 @@
 
 </section>
     
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    <script  src="{{ asset('js/portfolio.js') }}"></script> <!-- portfolio custom options -->
+    <script  src="{{ asset('js/quicksand.js') }}"></script> <!-- quicksand filter -->
+    <script  src="{{ asset('js/jquery.prettyPhoto.js') }}"></script> <!-- prettyPhoto lightbox -->
 {% endblock %}

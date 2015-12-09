@@ -15,11 +15,8 @@
         <li class="home-icon">
             <a href="/">/</a>
         </li>
-        <li>
-            <a href="/portfolio">Portfolio /</a>
-        </li>
         <li class="active">
-            <a href="#">{{ ez_field_value(content, 'titre_court') }}</a>
+            <a href="/portfolio">Portfolio</a>
         </li>
     </ul>
 
@@ -64,7 +61,7 @@
             <li>Année : <strong>{{ ez_field_value(content, 'annee') }}</strong></li>
             <li>Durée : <strong>{{ ez_field_value(content, 'duree') }}</strong></li>
             {% if not ez_is_field_empty(content, 'budget') %}
-            <li>Budget : <strong>{{ ez_render_field(content, 'budget') }} &euro;</strong></li>
+            <li>Budget : <strong>{{ ez_render_field(content, 'budget') }}</strong></li>
             {% endif %}
         </ul>
 
@@ -98,38 +95,38 @@
     <div class="grid_8 projet">
 
         {% if not ez_is_field_empty(content, 'mission') %}
-        <h4>Le projet</h4>
+        <h3>Le projet</h3>
         {{ ez_render_field(content, 'mission') }}
         <br />
         {% endif %}
 
         {% if not ez_is_field_empty(content, 'enjeux') %}
-        <h4>Enjeux et objectifs</h4>
+        <h3>Enjeux et objectifs</h3>
         {{ ez_render_field(content, 'enjeux') }}
         <br />
         {% endif %}
 
         {% if not ez_is_field_empty(content, 'contenu') %}
-        <h4>Description</h4>
+        <h3>Description</h3>
         {{ ez_render_field(content, 'contenu') }}
         <br />
         {% endif %}
 
         {% if not ez_is_field_empty(content, 'resultats') %}
-        <h4>Résultats</h4>
+        <h3>Résultats</h3>
         {{ ez_render_field(content, 'resultats') }}
         {% endif %}
     </div>
 
         
 </div>
-        
-{# CONTENU TEXTE #}
-<div class="container_12">
-    
 
+{% endblock %}
 
-</div>
-    
-
+{% block script %}
+    {{ parent() }}
+    <script  src="{{ asset('js/portfolio.js') }}"></script> <!-- portfolio custom options -->
+    <script  src="{{ asset('js/quicksand.js') }}"></script> <!-- quicksand filter -->
+    <script  src="{{ asset('js/jquery.prettyPhoto.js') }}"></script> <!-- prettyPhoto lightbox -->
+    <script  src="{{ asset('js/jquery.nivo.slider.js') }}"></script><!-- nivo slider -->
 {% endblock %}

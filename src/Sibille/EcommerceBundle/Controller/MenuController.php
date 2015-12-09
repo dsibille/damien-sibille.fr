@@ -21,7 +21,8 @@ class MenuController extends Controller {
         $rootLocation = $this->getRootLocation();
         $query->criterion = new Criterion\LogicalAnd(
             array(
-                new Criterion\ParentLocationId( $rootLocation->id )
+                new Criterion\ParentLocationId( $rootLocation->id ),
+                new Criterion\Field( 'menu' , '=', true, null )
             )
         );
 

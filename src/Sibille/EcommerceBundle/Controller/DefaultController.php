@@ -13,6 +13,9 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $rootLocationId = 2;
+        $competencesId = 88;
+        
+        // CONTENU PRINCIPAL DE LA HOME
         $repository = $this->getRepository();
         $contentService = $repository->getContentService();
         $location = $repository->getLocationService()->loadLocation( $rootLocationId );
@@ -44,19 +47,33 @@ class DefaultController extends Controller
 
         // DERNIERS POSTS
         $query = new Query();
-        $query->limit = 4;
+        $query->limit = 3;
         $query->criterion = new Criterion\LogicalAnd(
             array(
-                new Criterion\ParentLocationId( 62 )
+               new Criterion\ContentTypeIdentifier( 'article' )
             )
         );
-        $query->sortClauses = array( new SortClause\DatePublished( Query::SORT_DESC ) );
-        
+        $query->sortClauses = array( new SortClause\DatePublished( Query::SORT_DESC ) );       
         $result = $repository->getSearchService()->findContent($query);
         $articles = array();
         foreach($result->searchHits as $hit)
         {
             $articles[] = $hit->valueObject;
+        }
+
+        // DERNIERS POSTS
+        $query->limit = 5;
+        $query->criterion = new Criterion\LogicalAnd(
+            array(
+               new Criterion\ContentTypeIdentifier( 'competence' )
+            )
+        );
+        $query->sortClauses = array( new SortClause\LocationPriority( Query::SORT_ASC ) );       
+        $result = $repository->getSearchService()->findContent($query);
+        $competences = array();
+        foreach($result->searchHits as $hit)
+        {
+            $competences[] = $hit->valueObject;
         }
 
         // ON RETOURNE LA VUE COMPLETEE DES VARIABLES CI-DESSUS
@@ -65,7 +82,8 @@ class DefaultController extends Controller
             'slides' => $slides, 
             'services' => $services, 
             'projets' => $projets,
-            'articles' => $articles
+            'articles' => $articles,
+            'competences' => $competences
             );
         $response = $this->get( 'ez_content' )->viewLocation( $rootLocationId, 'full', false, $params );
     
