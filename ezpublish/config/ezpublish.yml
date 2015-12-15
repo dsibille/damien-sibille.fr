@@ -33,7 +33,7 @@ ezpublish:
         match:
             Map\Host:
                 admin.damien-sibille.fr: ezdemo_site_clean_admin
-                ez.damien-sibille.fr: ezdemo_site_clean_user
+                www.damien-sibille.fr: ezdemo_site_clean_user
                 fre.1: fre
     system:
         ezdemo_site_clean_group:

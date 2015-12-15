@@ -1,0 +1,21 @@
+{% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
+
+{# PAGE D'ERREUR #}  
+{% block content %}         
+<section class="container_12">
+    <article class="grid_12 error-page">
+        <img src="{{ asset('img/404.png') }}" alt="error" />
+
+        <h1><span class="text-color">//</span> page not found <span class="text-color">\\</span></h1>
+        <p>
+            We are sorry but the page you were looking for 
+            cannot be found. It may have been moved <br />
+            to another location or it doesn’t exist anymore.
+        </p>
+
+        <a class="btn-medium">
+            <span>go home</span>
+        </a>
+    </article>
+</section>
+{% endblock %}   
