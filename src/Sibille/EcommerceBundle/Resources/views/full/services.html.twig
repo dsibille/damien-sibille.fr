@@ -78,5 +78,38 @@
     {{ parent() }}
     <script  src="{{ asset('js/jquery.carouFredSel-6.0.0-packed.js') }}"></script><!-- CarouFredSel carousel plugin -->
     <script  src="{{ asset('js/jquery.touchSwipe-1.2.5.js') }}"></script><!-- support for touch swipe on mobile devices -->
+    
+    <script>   
+        /* <![CDATA[ */
+        /* GRAYSCALE FUNCTION FOR CLIENT'S LOGO*/
+        $(function() {
+            // fade in the grayscaled images to avoid visual jump
+            $('.greyScale').hide().fadeIn(200);
+        });
+        // user window.load to ensure images have been loaded
+        $(window).load(function () {
+            $('.greyScale').greyScale({
+                // call the plugin with non-defult fadeTime (default: 400ms)
+                fadeTime: 300,
+                reverse: false
+            });
+        });
+
+
+        /* CLIENTS SCROLL */
+        $('#client-carousel').carouFredSel({
+            items: 5,
+            prev: '.clients-nav.prev',
+            next: '.clients-nav.next',
+            auto: false,
+            scroll: 1,
+            swipe: {
+                ontouch : true,
+                onMouse: true
+            }
+        })
+
+        /* ]]> */
+    </script>
 {% endblock %}
 

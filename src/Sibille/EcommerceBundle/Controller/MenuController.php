@@ -15,17 +15,15 @@ use eZ\Publish\API\Repository\Values\Content\Query\SortClause;
 class MenuController extends Controller {
     
     public function indexAction()
-    {
-        $query = new Query();
-        
+    {        
         $rootLocation = $this->getRootLocation();
+
+        $query = new Query();
         $query->criterion = new Criterion\LogicalAnd(
             array(
-                new Criterion\ParentLocationId( $rootLocation->id ),
                 new Criterion\Field( 'menu' , '=', true, null )
             )
         );
-
         $query->sortClauses = array( new SortClause\LocationPriority( Query::SORT_ASC ) );
         
         $result = $this->getRepository()->getSearchService()->findContent($query);

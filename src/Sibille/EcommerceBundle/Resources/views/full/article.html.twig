@@ -4,7 +4,7 @@
 <article class="page-title">
     
     <section class="title">
-        <h1>Catégorie : <span class="text-color">{{ ez_render_field(content, 'category') }}</span></h1>
+        <h1>Catégorie : <span class="text-color">{{ ez_render_field(content, 'categorie_article') }}</span></h1>
     </section> 
 
     <!-- .breadcrumbs start -->
@@ -85,189 +85,6 @@
 
         <div class="divider"></div>
 
-        <!-- .post-comments -->
-        <article class="post-comments">
-            <div class="section-title">
-                <h4>comments (4)</h4>
-            </div>
-
-            <ul class="comments-li">
-                <li> 
-                    <article class="comment">
-                        <div class="avatar">
-
-                            <img src="img/blog/avatar.jpg" alt="author" />
-
-                        </div>
-
-                        <ul class="comment-meta">
-                            <li>
-                                <a href="#" class="author">Mark </a> 
-                            </li>
-
-                            <li>
-                                January 02nd, 2013 at 12:05 am 
-                            </li>
-                        </ul>
-
-                        <div class="comment-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, onsectetuer 
-                                dipiscing elit, sed diam nonummy nibh 
-                                euismod tincidunt ut laoreet dolore 
-                                magna aliquam erat volutpat. 
-                            </p>
-
-                            <a class="comment-reply-link">
-                                reply
-                            </a>
-                        </div>                                        
-                    </article>
-
-                    <!-- second level comment -->
-                    <ul class="child">
-                        <li>
-                            <article class="comment">
-                                <div class="avatar">
-                                    <img src="img/blog/avatar.jpg" alt="author" />
-
-
-                                </div>
-
-                                <ul class="comment-meta">
-                                    <li>
-                                        <a href="#" class="author">Mark </a> 
-                                    </li>
-
-                                    <li>
-                                        January 12th, 2013 at 10:01 am
-                                    </li>
-                                </ul>
-
-                                <div class="comment-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, 
-                                        consectetuer adipiscing elit, 
-                                        sed diam nonummy nibh 
-                                        euismod tincidunt ut laoreet 
-                                        dolore magna aliquam erat 
-                                        volutpat. 
-                                    </p>
-
-                                    <a class="comment-reply-link">
-                                        reply
-                                    </a>
-                                </div>                                        
-                            </article>
-
-                            <!-- second level comment -->
-                            <ul class="child">
-                                <li>
-                                    <article class="comment">
-                                        <div class="avatar">
-                                            <img src="img/blog/avatar.jpg" alt="author" />
-
-
-                                        </div>
-
-                                        <ul class="comment-meta">
-                                            <li>
-                                                <a href="#" class="author">Mark </a> 
-                                            </li>
-
-                                            <li>
-                                                January 29th, 2013 at 08:16 am
-                                            </li>
-                                        </ul>
-
-                                        <div class="comment-body">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, 
-                                                consectetuer adipiscing elit, 
-                                                sed diam nonummy nibh 
-                                                euismod tincidunt ut laoreet 
-                                                dolore magna aliquam erat 
-                                                volutpat. 
-                                            </p>
-
-                                            <a class="comment-reply-link">
-                                                reply
-                                            </a>
-                                        </div>                                        
-                                    </article>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li><!-- post comments list item end -->
-
-                <li>
-                    <article class="comment">
-                        <div class="avatar">
-                            <img src="img/blog/avatar.jpg" alt="author" />
-                        </div>
-
-                        <ul class="comment-meta">
-                            <li>
-                                <a href="#" class="author">Mark </a> 
-                            </li>
-
-                            <li>
-                                February 15th, 2013 at 06:56 pm
-                            </li>
-                        </ul>
-
-                        <div class="comment-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, onsectetuer 
-                                dipiscing elit, sed diam nonummy nibh 
-                                euismod tincidunt ut laoreet dolore 
-                                magna aliquam erat volutpat. 
-                            </p>
-
-                            <a class="comment-reply-link">
-                                reply
-                            </a>
-                        </div>                                        
-                    </article>
-                </li>
-            </ul>
-        </article><!-- .post-comments end -->
-
-        <!-- .comment-form start -->
-        <section class="comment-form">
-            <div id="respond">
-                <h5 id="reply-title">Leave a comment</h5>
-
-                <p>
-                    Hey, so you decided to leave a comment! 
-                    That’s great. Just fill in the required 
-                    fields and hit submit. Note that your 
-                    comment will need to be reviewed before 
-                    it’s published.
-                </p>
-
-                <form id="commentform">
-                    <fieldset class="name-container">
-                        <label><span class="text-color">*</span> Name:</label>
-                        <input name="author" id="comment-name" type="text">
-                    </fieldset>
-
-                    <fieldset class="email-container">
-                        <label><span class="text-color">*</span> Email:</label>
-                        <input name="email" id="comment-email" type="email">
-                    </fieldset>
-
-                    <fieldset class="message">
-                        <label><span class="text-color">*</span> Message:</label>
-                        <textarea name="comment" id="comment-message" rows="8"></textarea>
-                    </fieldset>
-                    <input id="comment-reply" type="submit" value="submit">
-
-                </form>
-                <div id="comment-response"></div>
-            </div>
-        </section><!-- .comment-form end -->
     </article><!-- .grid_8 end -->
 
 
@@ -283,9 +100,10 @@
                     <h5>Catégories</h5>
                 </div>
                 <ul>
+                    <li><a href="{{ path('blog_categorie', {'categorie':'toutes' } )|lower }}">Toutes</a></li>
                     {% for categorie in categories %}
-                    <li><a href="">{{ categorie }}</a></li>
-                    {% endfor %}
+                    <li><a href="{{ path('blog_categorie', {'categorie':loop.index-1 } ) }}">{{ categorie }}</a></li>
+                    {% endfor %}                
                 </ul>  
             </li><!-- .widget_recent_entries end -->
 
@@ -294,4 +112,28 @@
     
 </div>
 {% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    <script>
+        /* <![CDATA[ */
+        // COMMENT FORM AJAX SUBMIT
+        $('#commentform #comment-reply').on('click', function(event){
+            event.preventDefault();
+            var name = $('#comment-name').val();
+            var email = $('#comment-email').val();
+            var message = $('#comment-message').val();
+            var form_data = new Array({'Name' : name, 'Email' : email, 'Message' : message});
+            $.ajax({
+                type: 'POST',
+                url: "contact.php",
+                data: ({'action': 'comment', 'form_data' : form_data})
+            }).done(function(data) {
+                alert(data);
+            });
+        });
+        /* ]]> */
+    </script>
+{% endblock %}
+
 

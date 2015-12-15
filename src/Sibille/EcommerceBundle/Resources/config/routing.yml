@@ -1,3 +1,6 @@
-sibille_ecommerce_homepage:
+home:
     path:     /
     defaults: { _controller: SibilleEcommerceBundle:Default:index }
+blog_categorie:
+    path:     /blog/categorie/{categorie}
+    defaults: { _controller: SibilleEcommerceBundle:Blog:index }

@@ -24,12 +24,11 @@
 {% endblock %}
 
 {% block content %}
-    
 {# FILTRE #}
 <div class="container_12">
     <section class="grid_12 portfolio-filter-container">
         <ul id="portfolio-filter">
-            <li class="active"><a class="all" href="#">Tous</a>/</li>
+            <li class="active"><a href="/portfolio">Tous</a>/</li>
             {% for categorie in categories %}
             <li><a class="{{ categorie }}" href="#">{{ categorie }}</a>/</li>
             {% endfor %}
@@ -44,9 +43,10 @@
     <ul id="filter-item">  
         {% for projet in projets %}
         {% set largeur = '300' %}
+        {% set hauteur = '176' %}
         <li data-id="id-{{ loop.index }}" class="grid_4"  data-alpha="{{ ez_render_field(projet, 'categorie') }}">
         {{ render( controller( 'ez_content:viewLocation', 
-            {'locationId': projet.contentInfo.mainLocationId, 'viewType': 'line', params: {'largeur': largeur} } ) ) 
+            {'locationId': projet.contentInfo.mainLocationId, 'viewType': 'line', params: {'largeur': largeur, 'hauteur': hauteur} } ) ) 
         }}
         </li>
         {% if( loop.index % 3 == 0 ) %}
@@ -56,21 +56,19 @@
     </ul><!-- portfolio items end -->
 
     {# PAGINATION #}
-    <!--<ul class="grid_12 clearfix">
-        <li class="pagination portfolio-pagination">
-            <ul>
-                <li class="arrow-prev">
-                    <a href="#"></a>
-                </li>
-                <li class="active">
-                    <a href="#">1</a>
-                </li>
-                <li class="arrow-next">
-                    <a href="#"></a>
-                </li>
-            </ul>
-        </li>
-    </ul>-->
+    {% if projets.haveToPaginate() %}
+    <ul class="grid_12 clearfix">
+    {{ pagerfanta( projets, 'twitter_bootstrap', 
+        {'routeName': location, 
+        'prev_message': '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+        'next_message': '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+        'css_prev_class': 'arrow-prev', 
+        'css_next_class': 'arrow-next',
+        'css_container_class': 'pagination portfolio-pagination'
+        } ) 
+    }}
+    </ul>
+    {% endif %}
 
 </section>
     

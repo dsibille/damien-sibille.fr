@@ -15,7 +15,7 @@
         var defaults = {
             limit: 5,                   //number of tweets to fetch
             visible_tweets: 2,           //number of tweets to be visible
-            username: 'envatowebdesign', 	//@username tweets to display. can be multiple usernames e.g. [philipbeel, vmrkela]
+            username: 'dsibille', 	//@username tweets to display. can be multiple usernames e.g. [philipbeel, vmrkela]
             time: false,                //display date
             replies: false,		//filter out @replys
             date_format: 'style1',
@@ -28,7 +28,7 @@
             //assign our initial vars
             var act = $(this);
             var $allTweets;
-            var requestURL = "js/twitter/tweets.php";
+            var requestURL = "http://www.damien-sibille.fr/bundles/sibilleecommerce/js/twitter/tweets.php";
             
             //do a JSON request to twitters API
             if(jQuery.isArray(tweetscrollOptions.username)){

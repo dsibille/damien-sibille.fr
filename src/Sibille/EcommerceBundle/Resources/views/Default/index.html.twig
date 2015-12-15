@@ -15,20 +15,20 @@
     <div id="slider" class="nivoSlider home-slider">
     {% for slide in slides %}
         {% set imageAlias = ez_image_alias( slide.getField( 'image' ), slide.versionInfo, 'original' ) %}
-        <img src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="slider" title="#htmlcaption{{ loop.index }}"/>     
+        <img src="{{ asset( imageAlias.uri, absolute=true ) }}" width="1000" height="361" alt="slider" title="#htmlcaption{{ loop.index }}"/>     
     {% endfor %}
     </div>
 
     {% for slide in slides %}
     <div id="htmlcaption{{ loop.index }}">
-        <h1>{{ slide.getField( 'image' ).value.alternativeText }}</h1>
+        <h1>{{ slide.getField( 'caption' ).value.xml.documentElement.nodeValue }}
+        <span> # {{ slide.getField( 'image' ).value.alternativeText }}</span></h1>
     </div>
     {% endfor %}
 </article>
 {% endblock %}
 
 {% block content %}
-
 <section class="container_12">
 
     {# SERVICES #}
@@ -60,9 +60,10 @@
         <ul id="portfolio-carousel" class="carousel-li">
             {% for projet in projets %}
             {% set largeur = '220' %}
+            {% set hauteur = '130' %}
             <li>
             {{ render( controller( 'ez_content:viewLocation', 
-                {'locationId': projet.contentInfo.mainLocationId, 'viewType': 'line', params: {'largeur': largeur} } ) ) 
+                {'locationId': projet.contentInfo.mainLocationId, 'viewType': 'line', params: {'largeur': largeur, 'hauteur': hauteur} } ) ) 
             }}
             </li>
             {% endfor %}
@@ -168,5 +169,46 @@
     <script  src="{{ asset('js/jquery.prettyPhoto.js') }}"></script> <!-- prettyPhoto lightbox -->
     <script  src="{{ asset('js/jquery.nivo.slider.js') }}"></script><!-- nivo slider -->
     <script  src="{{ asset('js/jquery.touchSwipe-1.2.5.js') }}"></script><!-- support for touch swipe on mobile devices -->
+    
+    <script>
+        /* <![CDATA[ */
+        /* main nivo slider */
+        $(window).load(function() {
+            $('#slider').nivoSlider({
+                controlNav: false
+            });
+        });
+
+        /* portfolio SCROLL */
+        $("#portfolio-carousel").carouFredSel({
+            items: 4,
+            prev: '.portfolio-carousel-nav.prev',
+            next: '.portfolio-carousel-nav.next',
+            auto: false,
+            scroll:1,
+
+            swipe: {
+                ontouch : true,
+                onMouse: true
+            }
+        });
+
+        /* GRAYSCALE FUNCTION FOR CLIENT'S LOGO*/
+        $(function() {
+            // fade in the grayscaled images to avoid visual jump
+            $('.greyScale').hide().fadeIn(200);
+        });
+        // user window.load to ensure images have been loaded
+        $(window).load(function () {
+            $('.greyScale').greyScale({
+                // call the plugin with non-defult fadeTime (default: 400ms)
+                fadeTime: 300,
+                reverse: false
+            });
+        });
+
+        /* ]]> */
+    </script> 
 {% endblock %}
+
 

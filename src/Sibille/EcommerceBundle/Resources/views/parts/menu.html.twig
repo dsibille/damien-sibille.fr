@@ -1,11 +1,14 @@
 {# empty Twig template #}
 <nav id="nav">
     <ul>
-        <li class="home active">
-            <a href="{{ path( ezpublish.rootLocation ) }}">Home</a>
-        </li>
         {% for item in menuItems %}
-        <li>
+        {% set itemName = item.versionInfo.contentInfo.name %}
+        {% set currentName = app.request.server.get("SCRIPT_NAME")|split('/') %} 
+        {% if itemName == 'Home' %}
+        <li class="home{% if currentName[1] == '' %} active{% endif %}">
+        {% else %}
+        <li{% if itemName == currentName[1] %} class="active"{% endif %}>
+        {% endif %}
             <a href="{{ path( "ez_urlalias", {"locationId": item.versionInfo.contentInfo.mainLocationId} )|lower }}">{{ ez_render_field( item, "title" ) }}</a>
         </li>
         {% endfor %}

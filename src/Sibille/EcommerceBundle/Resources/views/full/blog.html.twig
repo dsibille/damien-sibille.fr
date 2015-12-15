@@ -38,39 +38,18 @@
         {% endfor %}
         
         {# PAGINATION #}
-        <li class="pagination clearfix">
-            <ul>
-                <li class="arrow-prev">
-                    <a href="#"></a>
-                </li>
-                <li class="active">
-                    <a href="#">1</a>
-                </li>
-
-                <li>
-                    <a href="#">2</a>
-                </li>
-
-                <li>
-                    <a href="#">3</a>
-                </li>
-
-                <li>
-                    <a href="#">4</a>
-                </li>
-
-                <li>
-                    <a href="#">5</a>
-                </li>
-
-                <!-- arrow left start -->
-                <li class="arrow-next">
-                    <a href="#"></a>
-                </li><!-- arrow left end -->
-
-            </ul>
-        </li><!-- .pagination end -->
-
+        {% if articles.haveToPaginate() %}
+        {{ pagerfanta( articles, 'twitter_bootstrap', 
+            {'routeName': location, 
+            'prev_message': '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+            'next_message': '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+            'css_prev_class': 'arrow-prev', 
+            'css_next_class': 'arrow-next',
+            'css_container_class': 'pagination clearfix'
+            } ) 
+        }}
+        {% endif %}
+        
     </ul><!-- .grid_8 end -->
 
     <!-- .aside-right start -->
@@ -85,13 +64,14 @@
                     <h5>Catégories</h5>
                 </div>
                 <ul>
+                    <li><a href="{{ path('blog_categorie', {'categorie':'toutes' } )|lower }}">Toutes</a></li>
                     {% for categorie in categories %}
-                    <li><a href="">{{ categorie }}</a></li>
-                    {% endfor %}
+                    <li><a href="{{ path('blog_categorie', {'categorie':loop.index-1 } ) }}">{{ categorie }}</a></li>
+                    {% endfor %}                
                 </ul>  
             </li><!-- .widget_recent_entries end -->
 
-        </ul><!-- .aside_widgets end -->
+        </ul>
     </aside><!-- .aside-right end -->
 
 </div><!-- .container_12 end -->
@@ -102,4 +82,28 @@
     {{ parent() }}
     <script  src="{{ asset('js/jquery.nivo.slider.js') }}"></script><!-- nivo slider -->
     <script  src="{{ asset('js/jplayer/jquery.jplayer.min.js') }}"></script> <!-- prettyPhoto lightbox -->
+    
+    <script>
+        /* <![CDATA[ */
+        /* NIVO SLIDER */
+        $(window).load(function() {
+            $('#slider').nivoSlider({
+                controlNav: false
+            });
+        });
+
+        /* AUDIO PLAYER */
+        $("#jquery_jplayer_1").jPlayer({
+            ready: function (event) {
+                $(this).jPlayer("setMedia", {
+                    m4a:"http://www.jplayer.org/audio/m4a/TSP-01-Cro_magnon_man.m4a",
+                    oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg"
+                });
+            },
+            swfPath: "js/jplayer/",
+            supplied: "m4a, oga",
+            wmode: "window"
+        });
+        /* ]]> */
+    </script>
 {% endblock %}

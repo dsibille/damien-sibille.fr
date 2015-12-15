@@ -41,17 +41,21 @@
         <div class="section-title">
             <h5>Chiffres clés</h5>
             <ul class="links">
+                {% if prevId != 0 %}
                 <li class="arrow-prev">
-                    <a href="#"></a>
+                    <a href="{{ path( "ez_urlalias", {'locationId': prevId} )|lower }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
+                {% endif %}
 
                 <li class="portfolio-grid">
-                    <a href="portfolio3.html"></a>
+                    <a href="/portfolio"></a>
                 </li>
-
+                
+                {% if nextId != 0 %}
                 <li class="arrow-next">
-                    <a href="#"></a>
+                    <a href="{{ path( "ez_urlalias", {'locationId': nextId} )|lower }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
+                {% endif %}
             </ul>
 
         </div>
@@ -129,4 +133,14 @@
     <script  src="{{ asset('js/quicksand.js') }}"></script> <!-- quicksand filter -->
     <script  src="{{ asset('js/jquery.prettyPhoto.js') }}"></script> <!-- prettyPhoto lightbox -->
     <script  src="{{ asset('js/jquery.nivo.slider.js') }}"></script><!-- nivo slider -->
+    <script>
+        /* <![CDATA[ */
+        /* NIVO SLIDER */
+        $(window).load(function() {
+            $('#slider').nivoSlider({
+                controlNav: false
+            });
+        });
+        /* ]]> */
+    </script>
 {% endblock %}

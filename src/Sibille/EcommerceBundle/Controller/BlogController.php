@@ -6,37 +6,56 @@ use eZ\Bundle\EzPublishCoreBundle\Controller;
 use eZ\Publish\API\Repository\Values\Content\Query;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
 use eZ\Publish\API\Repository\Values\Content\Query\SortClause;
+use eZ\Publish\Core\Pagination\Pagerfanta\ContentSearchAdapter;
+use Pagerfanta\Pagerfanta;
 
 class BlogController extends Controller
 {
-    public function indexAction()
+    public function indexAction( $categorie = 'toutes' )
     {        
         $contentService = $this->getRepository()->getContentService();
         $content = $contentService->loadContent( 61 );
+        $location = $this->getRepository()->getLocationService()->loadLocation( 62 );
         
-        $query = new Query();
-        $query->criterion = new Criterion\LogicalAnd(
-            array(
-                new Criterion\ContentTypeIdentifier( 'article' )
-            )
-        );
-        $query->sortClauses = array( new SortClause\DatePublished( Query::SORT_DESC ) );
-        
-        $result = $this->getRepository()->getSearchService()->findContent($query);
-        $articles = array();
-        foreach($result->searchHits as $hit)
-        {
-            $articles[] = $hit->valueObject;
-        }
-                
+        // récupération des catégories du blog
         $contentTypeService = $this->getRepository()->getContentTypeService();
         $contentType = $contentTypeService->loadContentTypeByIdentifier( 'article' );
-        $categories = $contentType->getFieldDefinition('category')->fieldSettings['options'];
+        $options = $contentType->getFieldDefinition('categorie_article')->fieldSettings['options'];
 
+        // recherche de tous les posts 
+        $query = new Query();
+        if ($categorie == 'toutes') {
+            $query->criterion = new Criterion\LogicalAnd(
+                array( 
+                    new Criterion\ContentTypeIdentifier( 'article' ),
+                )
+            );
+        } else {
+            $query->criterion = new Criterion\LogicalAnd(
+                array( 
+                    new Criterion\ContentTypeIdentifier( 'article' ),
+                    new Criterion\Field( 'categorie_article', Criterion\Operator::CONTAINS, $categorie )
+                )
+            );
+        }
+        $query->sortClauses = array( new SortClause\DatePublished( Query::SORT_DESC ) );        
+
+        $pager = new Pagerfanta(
+            new ContentSearchAdapter( $query, $this->getRepository()->getSearchService() )
+        );
+        $pager->setMaxPerPage( 5 );
+        $pager->setCurrentPage( $this->getRequest()->get( 'page', 1 ) );        
+  
         return $this->render(
-                'SibilleEcommerceBundle:full:blog.html.twig',
-                array('content' => $content, 'articles' => $articles, 'categories' => $categories)
-        );         
+            'SibilleEcommerceBundle:full:blog.html.twig', array(
+                'content' => $content, 
+                'location' => $location,
+                'total' => $pager->getNbResults(),
+                'articles' => $pager, 
+                'categories' => $options
+            )
+        );    
+        
     }
 
     public function viewLocationAction( $locationId, $viewType, $layout = false, array $params = array() )
@@ -49,9 +68,9 @@ class BlogController extends Controller
         // récupération des mots clés dans le champ techno
         $contentTypeService = $this->getRepository()->getContentTypeService();
         $contentType = $contentTypeService->loadContentTypeByIdentifier( 'article' );
-        $categories = $contentType->getFieldDefinition('category')->fieldSettings['options'];
+        $options = $contentType->getFieldDefinition('categorie_article')->fieldSettings['options'];
           
-        $params += array( 'categories' => $categories );
+        $params += array( 'categories' => $options );
         $response = $this->get( 'ez_content' )->viewLocation( $locationId, $viewType, $layout, $params );
     
         return $response;

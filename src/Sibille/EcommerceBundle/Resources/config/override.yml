@@ -38,6 +38,11 @@ ezpublish:
                         template: SibilleEcommerceBundle:full:article.html.twig
                         match:
                             Identifier\ContentType: article
+                    contact:
+                        #controller: SibilleEcommerceBundle:Blog:viewLocation
+                        template: SibilleEcommerceBundle:full:contact.html.twig
+                        match:
+                            Identifier\ContentType: contact
                 line:
                     service:
                         template: SibilleEcommerceBundle:line:service.html.twig

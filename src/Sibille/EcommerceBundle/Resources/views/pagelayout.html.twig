@@ -1,4 +1,3 @@
-{# empty Twig template #}
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,11 +5,11 @@
         {% if content is defined and title is not defined %}
             {% set title = ez_content_name( content ) %}
         {% endif %}
-        <title>{{ title|default( 'Home' ) }}</title>
-        <meta name="description" content="Creative Multipurpose HTML5 Theme">
-        <meta name="author" content="pixel-industry">
+        <title>{{ ez_render_field(content, 'seo_title') ~ ' | Damien SIBILLE responsable e-commerce' }}</title>
+        <meta name="description" content="{{ ez_render_field(content, 'seo_description') }}">
+        <meta name="author" content="Damien SIBILLE">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
-
+        <meta name="google-site-verification" content="9Vd7NMx1BX07_k-zapTdhQJp3ky9JcddFLHtBh-z8yE" />
 
         <!-- stylesheets -->
         {% block stylesheets %}
@@ -51,8 +50,8 @@
 
                 <!-- logo start -->
                 <section id="logo">
-                    <a href="index.html">
-                        <img src="img/logo.png" alt="logo"/>
+                    <a href="{{ path( ezpublish.rootLocation ) }}">
+                        <img src="{{ asset('img/logo-damien-sibille.png') }}" alt="Damien SIBILLE # Responsable E-Commerce"/>
                     </a>
                 </section>
 
@@ -66,10 +65,7 @@
 
                     <!-- search start -->
                     <section id="search">
-                        <form action="#" method="get">
-                            <input class="search-submit" type="submit" />
-                            <input id="s" class="search-bkg" name="s" type="text" placeholder="Type and hit enter..." />
-                        </form>
+                        
                     </section>
                 </section>
             </header>
@@ -104,62 +100,12 @@
         <script  src="{{ asset('js/socialstream.jquery.js') }}"></script> <!-- Social Networks Feeds -->
         <script  src="{{ asset('js/jquery.tweetscroll.js') }}"></script> <!-- jQuery tweetscroll plugin -->
         <script  src="{{ asset('js/include.js') }}"></script> <!-- jQuery custom options -->
-        {% endblock %}
 
         <script>
-            /* <![CDATA[ */
-            /* main nivo slider */
-            $(window).load(function() {
-                $('#slider').nivoSlider({
-                    controlNav: false
-                });
-            });
-            
-            /* portfolio SCROLL */
-            $("#portfolio-carousel").carouFredSel({
-                items: 4,
-                prev: '.portfolio-carousel-nav.prev',
-                next: '.portfolio-carousel-nav.next',
-                auto: false,
-                scroll:1,
-                
-                swipe: {
-                    ontouch : true,
-                    onMouse: true
-                }
-            });
-            
-            /* GRAYSCALE FUNCTION FOR CLIENT'S LOGO*/
-            $(function() {
-                // fade in the grayscaled images to avoid visual jump
-                $('.greyScale').hide().fadeIn(200);
-            });
-            // user window.load to ensure images have been loaded
-            $(window).load(function () {
-                $('.greyScale').greyScale({
-                    // call the plugin with non-defult fadeTime (default: 400ms)
-                    fadeTime: 300,
-                    reverse: false
-                });
-            });
-            
-            
-            /* CLIENTS SCROLL */
-            $('#client-carousel').carouFredSel({
-                items: 5,
-                prev: '.clients-nav.prev',
-                next: '.clients-nav.next',
-                auto: false,
-                scroll: 1,
-                swipe: {
-                    ontouch : true,
-                    onMouse: true
-                }
-            })
-            
+            /* <![CDATA[ */            
             /* TWEETSCROLL */
             $('.tweets-list-container').tweetscroll({
-                username: 'pixel_industry', 
+                username: 'dsibille', 
                 time: true, 
                 limit: 11, 
                 replies: true, 
@@ -168,8 +114,18 @@
                 animation: 'fade',
                 visible_tweets: 1
             });
+
+            /* PINTEREST FEED */
+            $('.pinterest-feed').socialstream({
+                socialnetwork: 'pinterest',
+                limit: 15,
+                username: 'damiensibille'
+            })
+
             /* ]]> */
         </script>
+        {% endblock %}
+
     </body>
 
 

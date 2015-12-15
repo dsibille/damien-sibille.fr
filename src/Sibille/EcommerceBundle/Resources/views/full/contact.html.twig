@@ -1,0 +1,150 @@
+{% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
+
+{% block title %}
+<article class="page-title">
+    
+    <section class="title">
+        <h1>Un projet, une question, un conseil ? <span class="text-color">Contactez-moi !</span></h1>
+    </section> 
+
+    <!-- .breadcrumbs start -->
+    <ul class="breadcrumbs">
+        <li>
+            vous êtes ici:
+        </li>
+        <li class="home-icon">
+            <a href="/">/</a>
+        </li>
+        <li class="active">
+            <a href="/contact">Contact</a>
+        </li>
+    </ul>
+
+</article> 
+{% endblock %}
+
+{% block content %}
+<div class="container_12">
+    
+    <!-- .aside-left start -->
+    <div class="grid_6 aside aside-left">
+
+        <!-- .widget start -->
+        <ul class="aside_widgets">
+
+            <!-- .widget_text start -->
+            <li class="widget widget_text">
+                <div class="title">
+                    <h5>Coordonnées</h5>
+                </div>
+
+                <ul class="quick-contact-info">
+                    <li><strong>Damien SIBILLE</strong><br />
+                        Le Saint Landry<br />
+                        Montée du Coin<br />
+                        73480 Lanslevillard
+                    </li>
+                    <ul class="contact-phone">
+                        <li>
+                            <span>+33 (0)6 68 79 47 80</span>
+                        </li>
+                    </ul>  
+
+                </ul>
+            </li>
+            
+            <!-- .widget_text start -->
+            <li class="widget widget_text">
+                <div class="title">
+                    <h5>Votre demande</h5>
+                </div>
+                <ul class="quick-contact-info">
+                    <li>Remplissez le formulaire ci-dessous et je vous répondrai sous 24 à 48 h.</li>
+                </ul>
+            </li>
+
+        </ul><!-- widget end -->
+    </div><!-- .aside-left end -->
+
+    <!-- .grid_8 start -->
+    <div class="grid_8" style="margin-bottom: 30px !important">
+        <div id="map_canvas"></div>
+    </div>
+    
+    <div class="clearfix"></div>
+    
+    <!-- .grid_12 start -->
+    <div class="grid_1"></div>
+    <div class="grid_6">
+
+        <form class="wpcf7">
+        <fieldset>
+            <label><span class="text-color">*</span> Nom :</label>
+            <input type="text" class="wpcf7-text" id="contact-name"/>
+        </fieldset>
+
+        <fieldset>
+             <label><span class="text-color">*</span> Prénom :</label>
+             <input type="text" class="wpcf7-text" id="contact-lastname"/>
+         </fieldset>
+
+        <fieldset>
+            <label><span class="text-color">*</span> Email :</label>
+            <input type="email" name="email" id="contact-email" class="wpcf7-text" />
+        </fieldset>
+
+        <fieldset>
+            <label><span class="text-color">*</span> Message :</label>
+            <textarea rows="10" class="wpcf7-textarea" id="contact-message"></textarea>
+        </fieldset>
+
+        <input type="submit" class="wpcf7-submit" value="ENVOYER" />
+
+        </form>
+    </div>
+    <div class="grid_5">
+        <a class="btn-medium" href="https://goo.gl/maps/APZfcMtjxRH2" target="_blank">
+            <span>Afficher l'itinéraire sur Google Maps</span>
+        </a>
+    </div>
+    
+</div>
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    <script  src="http://maps.google.com/maps/api/js?sensor=true"></script> <!-- google maps -->
+    <script  src="{{ asset('js/jquery.ui.map.full.min.js') }}"></script> <!-- jquery plugin for google maps -->  
+    
+    <script>
+        /* <![CDATA[ */
+        /* GOOGLE MAP */
+        $(function(){
+            //google maps
+            var yourStartLatLng = new google.maps.LatLng(45.2898799, 6.911713999999961);
+            $('#map_canvas').gmap({'center': yourStartLatLng,'zoom': 15, 'disableDefaultUI':true, 'callback': function() {
+                    var self = this;
+                    self.addMarker({'position': this.get('map').getCenter() });	
+                }});                         
+        });
+
+        // CONTACT FORM AJAX SUBMIT
+        $('.wpcf7 .wpcf7-submit').on('click', function(event){
+            event.preventDefault();
+            var name = $('#contact-name').val();
+            var lastName = $('#contact-lastname').val();
+            var email = $('#contact-email').val();
+            var message = $('#contact-message').val();
+            var fullName = name + ' ' + lastName;
+            var form_data = new Array({'Name' : fullName, 'Email' : email, 'Message' : message});
+            $.ajax({
+                type: 'POST',
+                url: "contact.php",
+                data: ({'action': 'contact', 'form_data' : form_data})
+            }).done(function(data) {
+                alert(data);
+            });
+        });
+        /* ]]> */
+    </script>
+{% endblock %}
