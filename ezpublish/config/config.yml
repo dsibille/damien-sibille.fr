@@ -20,7 +20,7 @@ framework:
     # which are valid with legacy tpl files.
     templating:      
         engines: ['eztpl', 'twig']  #assets_version: SomeVersionScheme
-        assets_base_urls: "/bundles/sibilleecommerce"    
+        assets_base_urls: "https://www.damien-sibille.fr/bundles/sibilleecommerce"    
     default_locale:  "%locale_fallback%"
     trusted_hosts:   ~
     trusted_proxies: ~
