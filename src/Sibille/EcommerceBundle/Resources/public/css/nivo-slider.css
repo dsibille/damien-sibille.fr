@@ -124,7 +124,7 @@
     width:900px;
     margin-left: 100px;
     z-index:8;
-    padding: 4px 20px 5px;
+    padding: 7px 20px 7px !important;
     overflow: hidden;
     display: none;
     text-align: center;
@@ -134,17 +134,17 @@
     box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-.nivo-caption h1{
+.nivo-caption h2 {
     margin-bottom: 0;
-    font: 22px 'Open Sans', Arial, sans-serif;
-    font-weight: 400;
-    color: #fff;
+    font: 18px 'Open Sans', Arial, sans-serif !important;
+    font-weight: 400 !important;
+    color: #fff !important;
 }
 
 .nivo-caption span{
-    font: 22px 'Open Sans', Arial, sans-serif;
-    font-weight: 200;
-    color: #aaa;
+    font: 18px 'Open Sans', Arial, sans-serif !important;
+    font-weight: 200 !important;
+    color: #aaa !important;
 }
 
 .nivo-caption-title{

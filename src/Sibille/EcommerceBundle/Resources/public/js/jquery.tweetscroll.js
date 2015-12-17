@@ -28,7 +28,7 @@
             //assign our initial vars
             var act = $(this);
             var $allTweets;
-            var requestURL = "http://www.damien-sibille.fr/bundles/sibilleecommerce/js/twitter/tweets.php";
+            var requestURL = "//www.damien-sibille.fr/bundles/sibilleecommerce/js/twitter/tweets.php";
             
             //do a JSON request to twitters API
             if(jQuery.isArray(tweetscrollOptions.username)){

@@ -15,14 +15,15 @@
     <div id="slider" class="nivoSlider home-slider">
     {% for slide in slides %}
         {% set imageAlias = ez_image_alias( slide.getField( 'image' ), slide.versionInfo, 'original' ) %}
-        <img src="{{ asset( imageAlias.uri, absolute=true ) }}" width="1000" height="361" alt="slider" title="#htmlcaption{{ loop.index }}"/>     
+        {% set alt = slide.getField( 'caption' ).value.xml.documentElement.nodeValue ~ ' ' ~ slide.getField( 'image' ).value.alternativeText %}
+        <img src="{{ asset( imageAlias.uri, absolute=true ) }}" width="1000" height="361" alt="{{ alt }}" title="#htmlcaption{{ loop.index }}"/>     
     {% endfor %}
     </div>
 
     {% for slide in slides %}
     <div id="htmlcaption{{ loop.index }}">
-        <h1>{{ slide.getField( 'caption' ).value.xml.documentElement.nodeValue }}
-        <span> # {{ slide.getField( 'image' ).value.alternativeText }}</span></h1>
+        <h2>{{ slide.getField( 'caption' ).value.xml.documentElement.nodeValue }}
+        <span> # {{ slide.getField( 'image' ).value.alternativeText }}</span></h2>
     </div>
     {% endfor %}
 </article>
@@ -43,7 +44,7 @@
     <article class="grid_12 portfolio-carousel clearfix">
 
         <section class="section-title">
-            <h4>Derniers projets</h4>
+            <h3>Derniers projets</h3>
             <ul class="portfolio-carousel-navigation">
                 <li>
                     <a class="portfolio-carousel-nav prev" href="#"></a> 
@@ -73,7 +74,7 @@
     {# DERNIERS POSTS #}
     <article class="grid_8">
         <section class="section-title">
-            <h4>Derniers posts</h4>
+            <h3>Derniers posts</h3>
         </section>
 
         {# LISTE DES POSTS #}
@@ -138,7 +139,7 @@
     {# ATOUTS / COMPETENCES #}
     <article class="grid_4">
         <section class="section-title">
-            <h4>Compétences</h4>
+            <h3>Compétences</h3>
         </section>
 
          <article class="accordion"> 

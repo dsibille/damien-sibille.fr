@@ -55,8 +55,8 @@
                     });	
                     break;
                 case 'pinterest':
-                    var url = 'http://pinterest.com/' + options.username + '/feed.rss'
-                    var api = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent(url) + "&num=" + options.limit + "&output=json_xml";
+                    var url = 'https://pinterest.com/' + options.username + '/feed.rss'
+                    var api = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent(url) + "&num=" + options.limit + "&output=json_xml";
 				
                     // Send request
                     $.getJSON(api, function(data){	

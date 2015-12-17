@@ -18,7 +18,6 @@
 <!-- responsive navigation start -->
 <select id="nav-responsive">
     <option selected="" value="">MENU...</option>
-    <option value="{{ path( ezpublish.rootLocation ) }}">Home</option>
     {% for item in menuItems %}
     <option value="{{ path( "ez_urlalias", {"locationId": item.versionInfo.contentInfo.mainLocationId} )|lower }}">{{ ez_render_field( item, "title" ) }}</option>
     {% endfor %}

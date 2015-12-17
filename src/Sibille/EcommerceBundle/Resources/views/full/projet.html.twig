@@ -1,5 +1,17 @@
 {% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
 
+{% block opengraph %}
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="{{ ez_field_value(content, 'title') }}" />
+<meta property="og:description" content="{{ ez_render_field(content, 'mission')|striptags }}" />
+<meta property="og:url"         content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" />
+<meta property="og:site_name"   content="Damien SIBILLE Consultant e-commerce" />
+{% if not ez_is_field_empty(content, 'image') %}
+{% set imageAlias = ez_image_alias( content.getField( 'image' ), content.versionInfo, 'original' ) %}
+<meta property="og:image"       content="{{ asset( imageAlias.uri, absolute=true ) }}" />
+{% endif %}
+{% endblock %}   
+
 {% block title %}
 <article class="page-title">
     
