@@ -51,7 +51,7 @@
 
         {# CHIFFRES CLES #}
         <div class="section-title">
-            <h5>Chiffres clés</h5>
+            <h3>Chiffres clés</h3>
             <ul class="links">
                 {% if prevId != 0 %}
                 <li class="arrow-prev">
@@ -111,25 +111,25 @@
     <div class="grid_8 projet">
 
         {% if not ez_is_field_empty(content, 'mission') %}
-        <h3>Le projet</h3>
+        <h2>Le projet</h2>
         {{ ez_render_field(content, 'mission') }}
         <br />
         {% endif %}
 
         {% if not ez_is_field_empty(content, 'enjeux') %}
-        <h3>Enjeux et objectifs</h3>
+        <h2>Enjeux et objectifs</h2>
         {{ ez_render_field(content, 'enjeux') }}
         <br />
         {% endif %}
 
         {% if not ez_is_field_empty(content, 'contenu') %}
-        <h3>Description</h3>
+        <h2>Description</h2>
         {{ ez_render_field(content, 'contenu') }}
         <br />
         {% endif %}
 
         {% if not ez_is_field_empty(content, 'resultats') %}
-        <h3>Résultats</h3>
+        <h2>Résultats</h2>
         {{ ez_render_field(content, 'resultats') }}
         {% endif %}
     </div>

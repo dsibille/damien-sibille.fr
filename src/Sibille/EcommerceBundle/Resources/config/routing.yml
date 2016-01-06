@@ -4,3 +4,6 @@ home:
 blog_categorie:
     path:     /blog/categorie/{categorie}
     defaults: { _controller: SibilleEcommerceBundle:Blog:index }
+contact:
+    path:     /contact
+    defaults: { _controller: SibilleEcommerceBundle:Contact:index }

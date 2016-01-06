@@ -32,7 +32,7 @@
         <!-- .widget start -->
         <ul class="aside_widgets">
 
-            <!-- .widget_text start -->
+            {# COORDONNEES #}
             <li class="widget widget_text">
                 <div class="title">
                     <h5>Coordonnées</h5>
@@ -49,6 +49,9 @@
                             <span>+33 (0)6 68 79 47 80</span>
                         </li>
                     </ul>  
+                    <a class="btn-small" href="https://goo.gl/maps/APZfcMtjxRH2" target="_blank">
+                        <span>Itinéraire Google Maps</span>
+                    </a>
 
                 </ul>
             </li>
@@ -74,39 +77,60 @@
     <div class="clearfix"></div>
     
     <!-- .grid_12 start -->
-    <div class="grid_1"></div>
-    <div class="grid_6">
+    <div class="grid_12">
 
-        <form class="wpcf7">
-        <fieldset>
-            <label><span class="text-color">*</span> Nom :</label>
-            <input type="text" class="wpcf7-text" id="contact-name"/>
-        </fieldset>
+        {# MESSAGES ERREUR ET SUCCES #}
+        <div class="grid_9" style="margin-bottom: 0 !important">
+            {% for message in app.session.flashbag.get('info') %}
+                <section class="success-box">
+                    <p>{{ message }}</p>
+                </section>
+           {% endfor %}
 
-        <fieldset>
-             <label><span class="text-color">*</span> Prénom :</label>
-             <input type="text" class="wpcf7-text" id="contact-lastname"/>
-         </fieldset>
+            {% if not form.vars.valid %}
+            <section class="error-box">
+                <p>{{ form_errors(form) }}</p>
+            </section>
+            {% endif %}
+        </div>
 
-        <fieldset>
-            <label><span class="text-color">*</span> Email :</label>
-            <input type="email" name="email" id="contact-email" class="wpcf7-text" />
-        </fieldset>
+        {# FORMULAIRE DE CONTACT #}
+        {{ form_start(form, {'method': 'POST', 'attr': {'class': 'wpcf7' }, 'id': 'contact-form', 'name': 'contact-form' }) }}
+        <div class="grid_5" style="margin-bottom: 0 !important">
+            <fieldset>
+                {{ form_widget(form.nom, {'attr': {'class': 'wpcf7-text', 'placeholder': 'Nom'}}) }}
+                <span class="text-color">*</span>
+            </fieldset>
+            
+            <fieldset>
+                {{ form_widget(form.email, {'attr': {'class': 'wpcf7-text', 'placeholder': 'Email'}}) }}
+                <span class="text-color">*</span>
+            </fieldset>
+        </div>    
+            
+        <div class="grid_5" style="margin-bottom: 0 !important">
+            <fieldset>
+                {{ form_widget(form.prenom, {'attr': {'class': 'wpcf7-text', 'placeholder': 'Prénom'}}) }}
+                <span class="text-color">*</span>
+            </fieldset>
+            <fieldset>
+                {{ form_widget(form.telephone, {'attr': {'class': 'wpcf7-text', 'placeholder': 'Téléphone'}}) }}
+            </fieldset>
+        </div>    
 
-        <fieldset>
-            <label><span class="text-color">*</span> Message :</label>
-            <textarea rows="10" class="wpcf7-textarea" id="contact-message"></textarea>
-        </fieldset>
+        <div class="grid_9" style="margin-bottom: 0 !important">
+            <fieldset>
+                {{ form_widget(form.commentaire, {'attr': {'rows': '10', 'class': 'wpcf7-textarea', 'placeholder': 'Votre message'}}) }}
+                <span class="text-color">*</span>
+            </fieldset>
+        </div>
 
-        <input type="submit" class="wpcf7-submit" value="ENVOYER" />
-
-        </form>
-    </div>
-    <div class="grid_5">
-        <a class="btn-medium" href="https://goo.gl/maps/APZfcMtjxRH2" target="_blank">
-            <span>Afficher l'itinéraire sur Google Maps</span>
-        </a>
-    </div>
+        <div class="grid_9">
+            <input type="submit" class="wpcf7-submit" value="ENVOYER" />
+        </div>  
+            
+        {{ form_end(form) }}
+    </div>    
     
 </div>
 {% endblock %}
@@ -128,23 +152,7 @@
                 }});                         
         });
 
-        // CONTACT FORM AJAX SUBMIT
-        $('.wpcf7 .wpcf7-submit').on('click', function(event){
-            event.preventDefault();
-            var name = $('#contact-name').val();
-            var lastName = $('#contact-lastname').val();
-            var email = $('#contact-email').val();
-            var message = $('#contact-message').val();
-            var fullName = name + ' ' + lastName;
-            var form_data = new Array({'Name' : fullName, 'Email' : email, 'Message' : message});
-            $.ajax({
-                type: 'POST',
-                url: "contact.php",
-                data: ({'action': 'contact', 'form_data' : form_data})
-            }).done(function(data) {
-                alert(data);
-            });
-        });
+        
         /* ]]> */
     </script>
 {% endblock %}

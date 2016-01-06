@@ -10,12 +10,13 @@
         {% if currentName[1] == '' %}
         <title>{{ ez_field_value(content, 'seo_title') }}</title>
         {% else %}
-        <title>{{ ez_field_value(content, 'seo_title') ~ ' | Damien SIBILLE responsable e-commerce' }}</title>
+        <title>{{ ez_field_value(content, 'seo_title') ~ ' | Damien SIBILLE' }}</title>
         {% endif %}
         <meta name="description" content="{{ ez_field_value(content, 'seo_description') }}">
         <meta name="author" content="Damien SIBILLE">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
-        <meta name="google-site-verification" content="9Vd7NMx1BX07_k-zapTdhQJp3ky9JcddFLHtBh-z8yE" />
+        <meta name="google-site-verification" content="fvTZkXY3KgiCX4vwHtUuophbiL9xpw-PRU9D44Hc4mo" />
+		<link href="https://plus.google.com/+DamiensibilleFr73" rel="publisher" />
         <link rel="alternate" hreflang="fr" href="https://www.damien-sibille.fr/" />
         <link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
 
@@ -108,7 +109,7 @@
         {% block script %}
         <script  src="{{ asset('js/jquery-1.8.3.js') }}"></script> <!-- jQuery library -->   
         <script  src="{{ asset('js/jquery.placeholder.min.js') }}"></script><!-- jQuery placeholder fix for old browsers -->
-        <script  src="{{ asset('js/socialstream.jquery.js') }}"></script> <!-- Social Networks Feeds -->
+        <script  src="{{ asset('js/socialstream.jquery.min.js') }}"></script> <!-- Social Networks Feeds -->
         <script  src="{{ asset('js/jquery.tweetscroll.js') }}"></script> <!-- jQuery tweetscroll plugin -->
         <script  src="{{ asset('js/include.js') }}"></script> <!-- jQuery custom options -->
 

@@ -2,14 +2,14 @@
 <nav id="nav">
     <ul>
         {% for item in menuItems %}
-        {% set itemName = item.versionInfo.contentInfo.name %}
+        {% set itemName = item.versionInfo.contentInfo.name|lower %}
         {% set currentName = app.request.server.get("SCRIPT_NAME")|split('/') %} 
-        {% if itemName == 'Home' %}
+        {% if itemName == 'home' %}
         <li class="home{% if currentName[1] == '' %} active{% endif %}">
         {% else %}
         <li{% if itemName == currentName[1] %} class="active"{% endif %}>
         {% endif %}
-            <a href="{{ path( "ez_urlalias", {"locationId": item.versionInfo.contentInfo.mainLocationId} )|lower }}">{{ ez_render_field( item, "title" ) }}</a>
+            <a href="{{ path( "ez_urlalias", {"locationId": item.versionInfo.contentInfo.mainLocationId} ) }}">{{ ez_render_field( item, "title" ) }}</a>
         </li>
         {% endfor %}
     </ul> 
@@ -19,7 +19,7 @@
 <select id="nav-responsive">
     <option selected="" value="">MENU...</option>
     {% for item in menuItems %}
-    <option value="{{ path( "ez_urlalias", {"locationId": item.versionInfo.contentInfo.mainLocationId} )|lower }}">{{ ez_render_field( item, "title" ) }}</option>
+    <option value="{{ path( "ez_urlalias", {"locationId": item.versionInfo.contentInfo.mainLocationId} ) }}">{{ ez_render_field( item, "title" ) }}</option>
     {% endfor %}
 </select> <!-- responsive navigation end -->
 

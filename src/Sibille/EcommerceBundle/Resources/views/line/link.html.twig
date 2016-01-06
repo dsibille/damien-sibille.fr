@@ -1,0 +1,37 @@
+{# TEMPLATE LINK #}
+<li class="blog-post format-link clearfix">    
+
+    {# DATE DE PUBLICATION #}
+<!-- .post-info start -->
+    <section class="post-info">
+        
+        {# DATE DE PUBLICATION #}
+        <div class="post-date">
+            <span class="date-big">{{ ez_field_value(content, 'publish_date')|date('d') }}</span>
+            <span>{{ ez_field_value(content, 'publish_date')|date('M Y') }}</span>
+        </div>
+
+        {# TITRE #}
+        <div class="title-meta">
+            <a href="{{ path( "ez_urlalias", {"locationId": content.versionInfo.contentInfo.mainLocationId} )|lower }}">
+                <h1>{{ ez_field_value(content, 'title') }}</h1>
+            </a>
+
+            <ul class="meta">
+                <li>
+                    <span>Par :</span>
+                    {{ ez_field_value(content, 'author') }}
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    {# LIEN #}
+     <article class="post-body">
+
+         <a href="{{ path( "ez_urlalias", {"locationId": content.versionInfo.contentInfo.mainLocationId} )|lower }}" target="_blank" class="link">
+             voir le lien externe
+         </a>
+
+     </article><!-- .post-body end -->
+ </li><!-- .blog-post end -->

@@ -14,6 +14,7 @@ class ServiceController extends Controller
         $contentService = $this->getRepository()->getContentService();
         $content = $contentService->loadContent( 73 );
         
+        // LISTE DES SERVICES
         $query = new Query();
         $query->criterion = new Criterion\LogicalAnd(
             array(
@@ -29,11 +30,18 @@ class ServiceController extends Controller
                 $services[] = $hit->valueObject;
         }
         
+        // SLIDER LOGOS CLIENTS
+        $field = $content->getField('clients');
+        $relations = $field->attribute('value')->destinationContentIds;        
+        $clients = array();
+        foreach ($relations as $relation) {
+            $clients[] = $contentService->loadContent( $relation );
+        }
+
         return $this->render(
                 'SibilleEcommerceBundle:full:services.html.twig',
-                array('content' => $content, 'services' => $services)
+                array('content' => $content, 'services' => $services, 'clients' => $clients)
         );         
     }
-    
-    
+
 }

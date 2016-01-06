@@ -33,6 +33,9 @@
 <section class="container_12">
 
     {# SERVICES #}
+    <section class="section-title">
+        <h3>Prestations</h3>
+    </section>
     {% for service in services %}
         {% set class = '' %}
         {{ render( controller( 'ez_content:viewLocation', 
@@ -44,7 +47,7 @@
     <article class="grid_12 portfolio-carousel clearfix">
 
         <section class="section-title">
-            <h3>Derniers projets</h3>
+            <h3>Projets récents</h3>
             <ul class="portfolio-carousel-navigation">
                 <li>
                     <a class="portfolio-carousel-nav prev" href="#"></a> 

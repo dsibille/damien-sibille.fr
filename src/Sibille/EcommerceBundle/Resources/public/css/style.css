@@ -79,7 +79,8 @@ div.projet > ul {
     padding-left: 20px !important;
     padding-top: 0 !important;
 }
-div.projet > h5 {
+div.projet > h3 {
+    font-size: 14px;
     margin-top: 11px;
 }
 article.blog > ul {
@@ -848,10 +849,41 @@ strong + img{
     margin-top: 20px;
 }
 
-a{
-    font: 11px Arial, sans-serif;
-    color: #777;
+.projet a{
+    font: 12px Arial, sans-serif;
+    color: #cc9900;
+    text-decoration: underline !important;
+    text-decoration-style: dotted !important;
+    text-decoration-color: #cc9900;
 
+    -moz-text-decoration-color: #cc9900;
+    -moz-text-decoration-style: dotted; 
+    -webkit-transition: all 0.2s ease 0s;
+    -moz-transition: all 0.2s ease 0s;
+    -o-transition: all 0.2s ease 0s;
+    -ms-transition: all 0.2s ease 0s;
+    transition: all 0.2s ease 0s;
+}
+
+.blog a{
+    font: 12px Arial, sans-serif;
+    color: #cc9900; 
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #cc9900;
+
+    -moz-text-decoration-color: #cc9900;
+    -moz-text-decoration-style: dotted; 
+    -webkit-transition: all 0.2s ease 0s;
+    -moz-transition: all 0.2s ease 0s;
+    -o-transition: all 0.2s ease 0s;
+    -ms-transition: all 0.2s ease 0s;
+    transition: all 0.2s ease 0s;
+}
+
+a{
+    font: 12px Arial, sans-serif;
+    color: #666;
     -webkit-transition: all 0.2s ease 0s;
     -moz-transition: all 0.2s ease 0s;
     -o-transition: all 0.2s ease 0s;

@@ -53,7 +53,7 @@ class DefaultController extends Controller
                new Criterion\ContentTypeIdentifier( 'article' )
             )
         );
-        $query->sortClauses = array( new SortClause\DatePublished( Query::SORT_DESC ) );       
+        $query->sortClauses = array( new SortClause\Field('article', 'publish_date', Query::SORT_DESC, 'fre-FR') );
         $result = $repository->getSearchService()->findContent($query);
         $articles = array();
         foreach($result->searchHits as $hit)

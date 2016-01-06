@@ -2,6 +2,10 @@
 
 {% block opengraph %}
 <meta property="og:type"        content="article" />
+{% if not ez_is_field_empty(content, 'image') %}
+{% set imageAlias = ez_image_alias( content.getField( 'image' ), content.versionInfo, 'original' ) %}
+<meta property="og:image"       content="{{ asset( imageAlias.uri, absolute=true ) }}" /> 
+{% endif %}   
 <meta property="og:title"       content="{{ ez_field_value(content, 'title') }}" />
 <meta property="og:description" content="{{ ez_render_field(content, 'intro')|striptags }}" />
 <meta property="og:url"         content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" />
@@ -24,7 +28,7 @@
             <a href="/">/</a>
         </li>
         <li class="active">
-            <a href="/portfolio">Blog</a>
+            <a href="/blog">Blog</a>
         </li>
     </ul>
 
@@ -58,9 +62,7 @@
 
                 <!-- .title-meta start -->
                 <div class="title-meta">
-                    <a href="blog-single.html">
-                        <h2>{{ ez_field_value(content, 'title') }}</h2>
-                    </a>
+					<h2>{{ ez_field_value(content, 'title') }}</h2>
                 </div>
             </section>
 

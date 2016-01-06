@@ -38,7 +38,7 @@ class BlogController extends Controller
                 )
             );
         }
-        $query->sortClauses = array( new SortClause\DatePublished( Query::SORT_DESC ) );        
+        $query->sortClauses = array( new SortClause\Field('article', 'publish_date', Query::SORT_DESC, 'fre-FR') );
 
         $pager = new Pagerfanta(
             new ContentSearchAdapter( $query, $this->getRepository()->getSearchService() )

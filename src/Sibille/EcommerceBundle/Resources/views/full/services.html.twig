@@ -44,10 +44,10 @@
        
     {% endfor %}
 
-    <!-- .grid_12 start 
+    {# CARROUSEL LOGOS CLIENTS #}
     <article class="grid_12 clients clearfix">
         <section class="section-title">
-            <h4>our clients</h4>
+            <h4>Références clients</h4>
 
             <ul class="clients-navigation">
                 <li>
@@ -61,15 +61,16 @@
         </section>
 
         <ul id="client-carousel" class="carousel-li">
+        {% for client in clients %}
+            {% set imageAlias = ez_image_alias( client.getField( 'image' ), client.versionInfo, 'original' ) %}
+            {% set alt = client.getField( 'caption' ).value.xml.documentElement.nodeValue ~ ' ' ~ client.getField( 'image' ).value.alternativeText %}
             <li>
-                <a href="">
-                    <img class="greyScale" src="img/client-1.png" alt="client logo" />
-                </a>
+                <img class="greyScale" src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="{{ alt }}" />
             </li>
-
+        {% endfor %} 
         </ul>
 
-    </article> -->                   
+    </article>             
 
 </section>
 {% endblock %}
