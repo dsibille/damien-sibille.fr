@@ -7,7 +7,6 @@
         <h1>Un projet, une question, un conseil ? <span class="text-color">Contactez-moi !</span></h1>
     </section> 
 
-    <!-- .breadcrumbs start -->
     <ul class="breadcrumbs">
         <li>
             vous êtes ici:
@@ -26,16 +25,14 @@
 {% block content %}
 <div class="container_12">
     
-    <!-- .aside-left start -->
     <div class="grid_6 aside aside-left">
 
-        <!-- .widget start -->
         <ul class="aside_widgets">
 
             {# COORDONNEES #}
             <li class="widget widget_text">
-                <div class="title">
-                    <h5>Coordonnées</h5>
+                <div class="title contact">
+                    <h2>Coordonnées</h2>
                 </div>
 
                 <ul class="quick-contact-info">
@@ -56,27 +53,24 @@
                 </ul>
             </li>
             
-            <!-- .widget_text start -->
             <li class="widget widget_text">
-                <div class="title">
-                    <h5>Votre demande</h5>
+                <div class="title contact">
+                    <h2>Votre demande</h2>
                 </div>
                 <ul class="quick-contact-info">
                     <li>Remplissez le formulaire ci-dessous et je vous répondrai sous 24 à 48 h.</li>
                 </ul>
             </li>
 
-        </ul><!-- widget end -->
-    </div><!-- .aside-left end -->
+        </ul>
+    </div>
 
-    <!-- .grid_8 start -->
     <div class="grid_8" style="margin-bottom: 30px !important">
         <div id="map_canvas"></div>
     </div>
     
     <div class="clearfix"></div>
     
-    <!-- .grid_12 start -->
     <div class="grid_12">
 
         {# MESSAGES ERREUR ET SUCCES #}
@@ -101,7 +95,6 @@
                 {{ form_widget(form.nom, {'attr': {'class': 'wpcf7-text', 'placeholder': 'Nom'}}) }}
                 <span class="text-color">*</span>
             </fieldset>
-            
             <fieldset>
                 {{ form_widget(form.email, {'attr': {'class': 'wpcf7-text', 'placeholder': 'Email'}}) }}
                 <span class="text-color">*</span>

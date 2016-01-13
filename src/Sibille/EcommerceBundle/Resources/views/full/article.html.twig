@@ -16,10 +16,9 @@
 <article class="page-title">
     
     <section class="title">
-        <h1>Catégorie : <span class="text-color">{{ ez_render_field(content, 'categorie_article') }}</span></h1>
+        Blog catégorie : <span class="text-color">{{ ez_render_field(content, 'categorie_article') }}</span>
     </section> 
 
-    <!-- .breadcrumbs start -->
     <ul class="breadcrumbs">
         <li>
             vous êtes ici:
@@ -36,78 +35,81 @@
 {% endblock %}
 
 {% block content %}
-<div class="container_12">
+<div class="container_12" itemscope itemtype="http://schema.org/Article">
 
-    <!-- .grid_8 start -->
+    {# ARTICLE #}
     <article class="grid_8 blog-posts blog-post-single">
 
-        <!-- .blog-post start -->
+        {# CONTENU ARTICLE #}
         <article class="blog-post format-standard clearfix">      
             {% if not ez_is_field_empty(content, 'image') %}
             {% set imageAlias = ez_image_alias( content.getField( 'image' ), content.versionInfo, 'original' ) %}
             <img src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="{{ content.getField( 'image' ).value.alternativeText }}" />     
+            <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">    
+                <meta itemprop="url" content="{{ asset( imageAlias.uri, absolute=true ) }}">
+                <meta itemprop="width" content="620">
+                <meta itemprop="height" content="275">
+            </div>
             {% endif %}
-            <!-- .post-info start -->
+            
             <section class="post-info">
-                <!-- .post-date start -->
+                {# DATE #}
                 <div class="post-date">
                     <span class="date-big">{{ ez_field_value(content, 'publish_date')|date('d') }}</span>
                     <span>{{ ez_field_value(content, 'publish_date')|date('M Y') }}</span>
                 </div>
 
-                <!-- .post-category start -->
+                {# CATEGORIE #}
                 <div class="post-category">
                     <span class="category-text"></span>
                 </div>
 
-                <!-- .title-meta start -->
+                {# TITRE #}
                 <div class="title-meta">
-					<h2>{{ ez_field_value(content, 'title') }}</h2>
+                    <h1 itemprop="name">{{ ez_field_value(content, 'title') }}</h1>
+                    <ul class="meta">
+                        <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <span>Par </span><span itemprop="name">Damien SIBILLE</span>,
+                        </li>
+                        <li>
+                            <span>créé le </span><span itemprop="datePublished" content="{{ ez_field_value(content, 'publish_date')|date('Y-m-d') }}">{{ ez_field_value(content, 'publish_date')|date('d M Y') }}</span>,
+                        </li>
+                        <li>
+                            <span>modifié le </span><span itemprop="dateModified" content="{{ content.contentInfo.modificationDate|date('Y-m-d') }}">{{ content.contentInfo.modificationDate|date('d M Y') }}</span>
+                        </li>
+                    </ul>
                 </div>
             </section>
 
-            <!-- .post-body start -->
-            <article class="post-body blog">
+            {# CORPS ARTICLE #}
+            <meta itemprop="headline" content="{{ ez_render_field(content, 'intro')|striptags|truncate(100, true, '...') }}">
+            <article class="post-body blog" itemprop="text">            
             {{ ez_render_field(content, 'body') }}
             </article>
         </article>
 
-        <!-- .post-author start -->
-        <article class="post-author">
-            <div class="section-title">
-                <h5>A propos de l'auteur</h5>
-            </div>
-
-            <section class="post-author-body">
-                <img src="{{ asset('img/blog/photo-damien-sibille.jpg') }}" height="110" alt="Responsable E-Commerce Damien SIBILLE" />
-
-                <div class="post-author-about">
-                    <h6>{{ ez_field_value(content, 'author') }}</h6>
-
-                    <p>
-                        Passionné par le web, j'évolue comme Responsable E-Commerce 
-                        depuis près de 10 ans avec une double compétence technique et webmarketing.   
-                        J'aime contribuer activement à la <i>digitalisation</i> des entreprises.
-                    </p>
-                </div>
-            </section>
-        </article><!-- post-author end -->
+        {# URL ARTICLE #}
+        <meta itemprop="mainEntityOfPage" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+            
+        {# AUTEUR #}
+        <article class="post-author blog" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+        {% include "SibilleEcommerceBundle:parts:auteur.html.twig" with { 'type':'publisher' } %}
+        </article>
 
         <div class="divider"></div>
 
-    </article><!-- .grid_8 end -->
+    </article>
 
 
-    <!-- .aside-right start -->
+    {# WIDGETS COLONNE DE DROITE #}
     <aside class="grid_4 aside-right">
 
-        <!-- .widget start -->
         <ul class="aside_widgets">
 
-            <!-- .widget_categories start -->
+            {# SELECTION CATEGORIES ARTICLES #}
             <li class="widget widget_categories">
                 <div class="title">
-                    <h5>Catégories</h5>
+                    <h4>Catégories</h4>
                 </div>
                 <ul>
                     <li><a href="{{ path('blog_categorie', {'categorie':'toutes' } )|lower }}">Toutes</a></li>
@@ -115,10 +117,10 @@
                     <li><a href="{{ path('blog_categorie', {'categorie':loop.index-1 } ) }}">{{ categorie }}</a></li>
                     {% endfor %}                
                 </ul>  
-            </li><!-- .widget_recent_entries end -->
+            </li>
 
-        </ul><!-- .aside_widgets end -->
-    </aside><!-- .aside-right end -->
+        </ul>
+    </aside>
     
 </div>
 {% endblock %}

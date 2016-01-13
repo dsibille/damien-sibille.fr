@@ -7,7 +7,6 @@
         <h1><span class="text-color">{{ ez_field_value(content, 'title') }}</span> de mes réalisations</h1>
     </section> 
 
-    <!-- .breadcrumbs start -->
     <ul class="breadcrumbs">
         <li>
             vous êtes ici:
@@ -18,9 +17,9 @@
         <li class="active">
             <a href="#">{{ ez_field_value(content, 'title') }}</a>
         </li>
-    </ul><!-- .breadcrumbs end -->
+    </ul>
 
-</article> <!-- .page-title end -->
+</article> 
 {% endblock %}
 
 {% block content %}
@@ -36,20 +35,19 @@
     </section>
 </div>
 
-<!-- .container_12 start -->
 <section class="container_12">
 
     {# LISTE DES PROJETS #}
     <ul id="filter-item">  
         {% for projet in projets %}
-        {% set largeur = '300' %}
-        {% set hauteur = '176' %}
-        <li data-id="id-{{ loop.index }}" class="grid_4"  data-alpha="{{ ez_render_field(projet, 'categorie') }}">
+        {% set largeur = '220' %}
+        {% set hauteur = '130' %}
+        <li data-id="id-{{ loop.index }}" class="grid_3"  data-alpha="{{ ez_render_field(projet, 'categorie') }}">
         {{ render( controller( 'ez_content:viewLocation', 
             {'locationId': projet.contentInfo.mainLocationId, 'viewType': 'line', params: {'largeur': largeur, 'hauteur': hauteur} } ) ) 
         }}
         </li>
-        {% if( loop.index % 3 == 0 ) %}
+        {% if( loop.index % 4 == 0 ) %}
         <div class="clearfix"></div>
         {% endif %}
         {% endfor %}
@@ -76,7 +74,6 @@
 
 {% block script %}
     {{ parent() }}
-    <script  src="{{ asset('js/portfolio.js') }}"></script> <!-- portfolio custom options -->
-    <script  src="{{ asset('js/quicksand.js') }}"></script> <!-- quicksand filter -->
+    <script  src="{{ asset('js/portfolio.min.js') }}"></script> <!-- portfolio custom options -->
     <script  src="{{ asset('js/jquery.prettyPhoto.js') }}"></script> <!-- prettyPhoto lightbox -->
 {% endblock %}

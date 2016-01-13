@@ -13,13 +13,12 @@
         </li>
         {% endfor %}
     </ul> 
-</nav><!-- main navigation end -->
+</nav>
 
-<!-- responsive navigation start -->
 <select id="nav-responsive">
     <option selected="" value="">MENU...</option>
     {% for item in menuItems %}
     <option value="{{ path( "ez_urlalias", {"locationId": item.versionInfo.contentInfo.mainLocationId} ) }}">{{ ez_render_field( item, "title" ) }}</option>
     {% endfor %}
-</select> <!-- responsive navigation end -->
+</select>
 

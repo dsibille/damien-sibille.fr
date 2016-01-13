@@ -29,7 +29,7 @@ class PortfolioController extends Controller
         $pager = new Pagerfanta(
             new ContentSearchAdapter( $query, $this->getRepository()->getSearchService() )
         );
-        $pager->setMaxPerPage( 9 );
+        $pager->setMaxPerPage( 12 );
         $pager->setCurrentPage( $this->getRequest()->get( 'page', 1 ) );        
 
         $contentTypeService = $this->getRepository()->getContentTypeService();

@@ -1,5 +1,9 @@
 {% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
 
+{% block canonical %}
+<link rel="canonical" href="https://www.damien-sibille.fr/blog">
+{% endblock %}   
+
 {% block title %}
 <article class="page-title">
     
@@ -7,7 +11,6 @@
         <h1><span class="text-color">{{ ez_field_value(content, 'title') }}</span></h1>
     </section> 
 
-    <!-- .breadcrumbs start -->
     <ul class="breadcrumbs">
         <li>
             vous êtes ici:
@@ -18,16 +21,15 @@
         <li class="active">
             <a href="#">{{ ez_field_value(content, 'title') }}</a>
         </li>
-    </ul><!-- .breadcrumbs end -->
+    </ul>
 
-</article> <!-- .page-title end -->
+</article>
 {% endblock %}
 
 {% block content %}
     
 <div class="container_12">
 
-    <!-- .grid_8 start -->
     <ul class="grid_8 blog-posts blog-posts2">
 
         {# LISTE DES ARTICLES #}
@@ -50,15 +52,12 @@
         }}
         {% endif %}
         
-    </ul><!-- .grid_8 end -->
+    </ul>
 
-    <!-- .aside-right start -->
     <aside class="grid_4 aside-right">
 
-        <!-- .widget start -->
         <ul class="aside_widgets">
 
-            <!-- .widget_categories start -->
             <li class="widget widget_categories">
                 <div class="title">
                     <h5>Catégories</h5>
@@ -69,18 +68,18 @@
                     <li><a href="{{ path('blog_categorie', {'categorie':loop.index-1 } ) }}">{{ categorie }}</a></li>
                     {% endfor %}                
                 </ul>  
-            </li><!-- .widget_recent_entries end -->
+            </li>
 
         </ul>
-    </aside><!-- .aside-right end -->
+    </aside>
 
-</div><!-- .container_12 end -->
+</div>
     
 {% endblock %}
 
 {% block script %}
     {{ parent() }}
-    <script  src="{{ asset('js/jquery.nivo.slider.js') }}"></script><!-- nivo slider -->
+    <script  src="{{ asset('js/jquery.nivoslider.min.js') }}"></script><!-- nivo slider -->
     <script  src="{{ asset('js/jplayer/jquery.jplayer.min.js') }}"></script> <!-- prettyPhoto lightbox -->
     
     <script>

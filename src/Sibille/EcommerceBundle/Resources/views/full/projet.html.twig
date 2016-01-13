@@ -36,14 +36,15 @@
 {% endblock %}
 
 {% block content %}
-<div class="container_12">
+<div class="container_12" itemscope itemtype="http://schema.org/CreativeWork">
     
     {# IMAGE #}
     <article class="grid_8">
         <div id="slider" class="nivoSlider portfolio-slider">
             {% set imageAlias = ez_image_alias( content.getField( 'image' ), content.versionInfo, 'original' ) %}
-            <img src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="{{ content.getField( 'image' ).value.alternativeText }}" />     
-        </div><!-- .nivoSlider end -->
+            <img itemprop="image" src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="{{ content.getField( 'image' ).value.alternativeText }}" />     
+        </div>
+        <span itemprop="about">{{ ez_field_value(content, 'title') }}</span>
 
     </article>
 
@@ -51,7 +52,7 @@
 
         {# CHIFFRES CLES #}
         <div class="section-title">
-            <h3>Chiffres clés</h3>
+            <h4>Chiffres clés</h4>
             <ul class="links">
                 {% if prevId != 0 %}
                 <li class="arrow-prev">
@@ -74,7 +75,7 @@
             
         <ul class="arrow-list">
             <li>Client : <strong>{{ ez_render_field(content, 'client') }}</strong></li>
-            <li>Année : <strong>{{ ez_field_value(content, 'annee') }}</strong></li>
+            <li itemprop="dateCreated" content="{{ ez_field_value(content, 'annee') }}">Année : <strong>{{ ez_field_value(content, 'annee') }}</strong></li>
             <li>Durée : <strong>{{ ez_field_value(content, 'duree') }}</strong></li>
             {% if not ez_is_field_empty(content, 'budget') %}
             <li>Budget : <strong>{{ ez_render_field(content, 'budget') }}</strong></li>
@@ -88,18 +89,19 @@
 
             <li class="widget widget_tag_cloud">
                 <div class="title">
-                    <h5>Technos</h5>
+                    <h4>Technos</h4>
                 </div>
-                <div class="tagcloud">
+                <div class="tagcloud" itemprop="keywords">
                 {% for techno in technos %}
                     <a href="#">{{ techno }}</a>
                 {% endfor %}
                 </div>
-            </li><!-- .widget_tag_cloud end -->
+            </li>
 
-        </ul><!-- .aside_widgets end -->
+        </ul>
         
         {# BOUTON VOIR LE SITE #}        
+        <meta itemprop="url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
         {% if not ez_is_field_empty(content, 'url') %}
         <a href="{{ ez_field_value(content, 'url') }}" class="btn-medium" target="_blank">
             <span>Voir le site</span>
@@ -112,7 +114,7 @@
 
         {% if not ez_is_field_empty(content, 'mission') %}
         <h2>Le projet</h2>
-        {{ ez_render_field(content, 'mission') }}
+        <meta itemprop="headline" content="{{ ez_render_field(content, 'mission') }}">{{ ez_render_field(content, 'mission') }}
         <br />
         {% endif %}
 
@@ -124,7 +126,7 @@
 
         {% if not ez_is_field_empty(content, 'contenu') %}
         <h2>Description</h2>
-        {{ ez_render_field(content, 'contenu') }}
+        <meta itemprop="text" content="{{ ez_render_field(content, 'contenu') }}">{{ ez_render_field(content, 'contenu') }}
         <br />
         {% endif %}
 
@@ -132,19 +134,22 @@
         <h2>Résultats</h2>
         {{ ez_render_field(content, 'resultats') }}
         {% endif %}
+
+        {# AUTEUR #}
+        <article class="post-author" itemprop="creator" itemscope="" itemtype="http://schema.org/Person">
+        {% include "SibilleEcommerceBundle:parts:auteur.html.twig" with { 'type':'creator' } %}
+        </article>
+
     </div>
 
-        
 </div>
 
 {% endblock %}
 
 {% block script %}
     {{ parent() }}
-    <script  src="{{ asset('js/portfolio.js') }}"></script> <!-- portfolio custom options -->
-    <script  src="{{ asset('js/quicksand.js') }}"></script> <!-- quicksand filter -->
-    <script  src="{{ asset('js/jquery.prettyPhoto.js') }}"></script> <!-- prettyPhoto lightbox -->
-    <script  src="{{ asset('js/jquery.nivo.slider.js') }}"></script><!-- nivo slider -->
+    <script  src="{{ asset('js/portfolio.min.js') }}"></script> <!-- portfolio custom options -->
+    <script  src="{{ asset('js/jquery.nivoslider.min.js') }}"></script><!-- nivo slider -->
     <script>
         /* <![CDATA[ */
         /* NIVO SLIDER */

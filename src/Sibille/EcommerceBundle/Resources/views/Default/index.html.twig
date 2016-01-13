@@ -88,9 +88,8 @@
                     <div class="post-date">
                         <span class="date-big">{{ ez_field_value(article, 'publish_date')|date('d') }}</span>
                         <span>{{ ez_field_value(article, 'publish_date')|date('M Y') }}</span>
-                    </div><!-- post-date end -->
+                    </div>
 
-                    <!-- .title-meta start -->
                     <div class="title-meta">
                         <h4>{{ ez_field_value(article, 'title') }}</h4>
                         <span>Par : {{ ez_field_value(article, 'author') }}</span>
@@ -107,13 +106,11 @@
             <article id="tab{{  loop.index }}" class="tab-content blog-post format-standard clearfix">                  
 
                 <section class="post-info">
-                    <!-- .post-date start -->
                     <div class="post-date">
                         <span class="date-big">{{ ez_field_value(article, 'publish_date')|date('d') }}</span>
                         <span>{{ ez_field_value(article, 'publish_date')|date('M Y') }}</span>
-                    </div><!-- post-date end -->
+                    </div>
 
-                    <!-- .title-meta start -->
                     <div class="title-meta">
                         <a href="{{ path( "ez_urlalias", {"locationId": article.versionInfo.contentInfo.mainLocationId} )|lower }}">
                             <h4>{{ ez_field_value(article, 'title') }}</h4>
@@ -126,14 +123,13 @@
                             </li>
                         </ul>
                     </div>
-                </section><!-- .post-info end -->  
+                </section>
 
-                <!-- .post-body start -->
                 <article class="post-body">
                     {{ ez_render_field(article, 'intro') }}
                     <a href="{{ path( "ez_urlalias", {"locationId": article.versionInfo.contentInfo.mainLocationId} )|lower }}" class="read-more">[...]</a>
                 </article>
-            </article><!-- .blog-post end -->    
+            </article>  
             {% endfor %}
         </section>
 
@@ -154,7 +150,7 @@
                 </div>
             </section>
             {% endfor %}
-        </article><!-- .accordion end -->
+        </article>
 
         <p class="info">
             <span class="text-color">N'hésitez plus,</span> faites appel à mes services !
@@ -168,22 +164,19 @@
 {% block script %}
     {{ parent() }}
     <script  src="{{ asset('js/jquery.carouFredSel-6.0.0-packed.js') }}"></script><!-- CarouFredSel carousel plugin -->
-    <script  src="{{ asset('js/grayScale.js') }}"></script><!-- image grayscale to color effect -->
-    <script  src="{{ asset('js/portfolio.js') }}"></script> <!-- portfolio custom options -->
+    <script  src="{{ asset('js/portfolio.min.js') }}"></script> <!-- portfolio custom options -->
+    <script  src="{{ asset('js/jquery.nivoslider.min.js') }}"></script><!-- nivo slider -->
     <script  src="{{ asset('js/jquery.prettyPhoto.js') }}"></script> <!-- prettyPhoto lightbox -->
-    <script  src="{{ asset('js/jquery.nivo.slider.js') }}"></script><!-- nivo slider -->
     <script  src="{{ asset('js/jquery.touchSwipe-1.2.5.js') }}"></script><!-- support for touch swipe on mobile devices -->
     
     <script>
         /* <![CDATA[ */
-        /* main nivo slider */
         $(window).load(function() {
             $('#slider').nivoSlider({
                 controlNav: false
             });
         });
 
-        /* portfolio SCROLL */
         $("#portfolio-carousel").carouFredSel({
             items: 4,
             prev: '.portfolio-carousel-nav.prev',
@@ -197,12 +190,10 @@
             }
         });
 
-        /* GRAYSCALE FUNCTION FOR CLIENT'S LOGO*/
         $(function() {
             // fade in the grayscaled images to avoid visual jump
             $('.greyScale').hide().fadeIn(200);
         });
-        // user window.load to ensure images have been loaded
         $(window).load(function () {
             $('.greyScale').greyScale({
                 // call the plugin with non-defult fadeTime (default: 400ms)

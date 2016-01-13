@@ -65,7 +65,7 @@
             {% set imageAlias = ez_image_alias( client.getField( 'image' ), client.versionInfo, 'original' ) %}
             {% set alt = client.getField( 'caption' ).value.xml.documentElement.nodeValue ~ ' ' ~ client.getField( 'image' ).value.alternativeText %}
             <li>
-                <img class="greyScale" src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="{{ alt }}" />
+                <img src="{{ asset( imageAlias.uri, absolute=true ) }}" alt="{{ alt }}" />
             </li>
         {% endfor %} 
         </ul>

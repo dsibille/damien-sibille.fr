@@ -1,0 +1,24 @@
+{# AUTEUR #}
+<div class="section-title">
+    <h2>A propos de l'auteur</h2>
+</div>
+
+<section class="post-author-body">
+    {% if type == 'publisher' %}
+    <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">    
+        <meta itemprop="url" content="{{ asset('img/blog/photo-damien-sibille.jpg') }}">
+        <meta itemprop="width" content="83">
+        <meta itemprop="height" content="110">
+    </div>
+    {% endif %}
+
+    <img itemprop="image" src="{{ asset('img/blog/photo-damien-sibille.jpg') }}" height="110" alt="Photo Damien SIBILLE" />
+    <div class="post-author-about auteur">
+        <h3 itemprop="name">Damien SIBILLE</h3>                    
+        <p itemprop="description">
+            {% if type == 'publisher' %}Responsable e-commerce{% else %}<span itemprop="jobTitle"><strong>Responsable e-commerce</strong></span>{% endif %} avec une double compétence technique et webmarketing, 
+            j'aime participer activement à la <i>digitalisation</i> des entreprises.                       
+        </p>
+        <a itemprop="url" href="https://www.damien-sibille.fr">www.damien-sibille.fr</a>
+    </div>
+</section>

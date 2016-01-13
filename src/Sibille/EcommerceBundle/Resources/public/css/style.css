@@ -79,8 +79,15 @@ div.projet > ul {
     padding-left: 20px !important;
     padding-top: 0 !important;
 }
-div.projet > h3 {
-    font-size: 14px;
+div.projet h2 {
+    font: 16px 'Open Sans', Arial, sans-serif;    
+    font-weight: 700;
+    margin-top: 11px;
+}
+div.projet h3 {
+    font: 14px 'Open Sans', Arial, sans-serif;    
+    font-weight: 600;
+    text-transform: initial;
     margin-top: 11px;
 }
 article.blog > ul {
@@ -95,11 +102,42 @@ article.blog > ol {
     padding-left: 20px !important;
     padding-top: 0 !important;
 }
-article.blog > h4  {
+article.blog h2  {
+    font: 17px 'Open Sans', Arial, sans-serif;    
+    font-weight: 600;
+    text-transform: initial;
     margin-top: 11px;
 }
-article.blog > h5  {
+article.blog h3  {
+    font: 15px 'Open Sans', Arial, sans-serif;    
+    font-weight: 500;
+    text-transform: initial;
     margin-top: 11px;
+}
+article.blog h4  {
+    font: 12px 'Open Sans', Arial, sans-serif;    
+    margin-top: 11px;
+}
+article.blog h5  {
+    margin-top: 11px;
+}
+div.contact h2 {
+    font: 15px 'Open Sans', Arial, sans-serif;    
+    font-weight: 700;
+}
+div.auteur {
+    padding-top: 8px;
+    padding-bottom: 2px;
+}
+div.auteur a {
+    padding-top: 5px !important;
+    margin-top: 0px !important;
+}
+div.auteur h3  {
+    font: 15px 'Open Sans', Arial, sans-serif;    
+    font-weight: 600;
+    text-transform: initial;
+    margin-top: 0px !important;
 }
 
 /* `Container
@@ -108,7 +146,7 @@ article.blog > h5  {
 
 /* `Grid >> Global
 ----------------------------------------------------------------------------- */
-.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12 {display: inline; float: left; margin-left: 10px; margin-right: 10px; margin-bottom: 50px;}
+.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8, .grid_9, .grid_10, .grid_11, .grid_12 {display: inline; float: left; margin-left: 10px; margin-right: 10px; margin-bottom: 35px;}
 .push_1, .pull_1, .push_2, .pull_2, .push_3, .pull_3, .push_4, .pull_4, .push_5, .pull_5, .push_6, .pull_6, .push_7, .pull_7, .push_8, .pull_8, .push_9, .pull_9, .push_10, .pull_10, .push_11, .pull_11 {position: relative;}
 
 /* `Grid >> Children (Alpha ~ First, Omega ~ Last)
@@ -2434,7 +2472,7 @@ figcaption{
 }
 
 .grid_3 .caption-title{
-    width: 140px;
+    width: 165px;
 }
 
 .caption-hover{
@@ -3512,7 +3550,7 @@ ul.contact-phone li span{
     float: left;
     width: 884px;
     padding-right: 30px;
-    padding-top: 18px;
+    padding-top: 26px;
     overflow: hidden;
     position: relative;
 }
@@ -3525,18 +3563,23 @@ ul.contact-phone li span{
 .tweets-list-container p{
     color: #eee;
     font: 12px Arial, sans-serif;
-    line-height: 12px;
+    line-height: 15px;
 }
 
 .tweets-list-container a{
     color: #aaa;
     font: 12px Arial, sans-serif;
-    line-height: 12px;
+    line-height: 15px;
 }
 
 .tweets-list-container small{
     font: 11px Arial, sans-serif;
 }
+
+.tweets-list-container li {
+    margin-bottom: 3px;
+}
+
 
 
 /* FOOTER WIDGETS
@@ -3927,7 +3970,7 @@ ul.contact-phone li span{
 
     .tweets-list-container{
         width: 650px;
-        padding-bottom: 18px;
+        padding-top: -10px;
     }
 
     .footer-widget-container.grid_3 .social-feed li:nth-child(5n), 
@@ -5103,4 +5146,169 @@ ul.contact-phone li span{
     .widget_search .search-bkg input{
         width: 195px;
     }
+}
+
+/* ============================================================================
+
+Theme Name: CleanBIZ - Creative Multipurpose HTML5 Theme
+Theme URI: http://pixel-industry.com/html/cleanbiz
+Author: pixel-industry
+Version: 1.0
+YELLOW COLOR
+============================================================================= */
+
+.accordion .title.active a{
+    background: url('../img/list-arrow-open-yellow.png') no-repeat 0 center;
+}
+
+.team .vertical-toggle .active .toggle-btn{
+    background-image: url('../img/list-arrow-open-yellow.png') !important;
+}
+
+.btn-small,
+.btn-medium,
+.btn-big,
+span.dropcap-color,
+#nav li.active, #nav li:hover,
+#search,
+.portfolio-carousel-navigation li:hover,
+.social-links.team-social li:hover,
+.clients-navigation li:hover,
+.team-navigation li:hover,
+.social-links.team li:hover,
+.caption-hover li,
+.blog-post.sticky .title-meta h1,
+#respond #comment-reply,
+.comment-reply-link,
+.wpcf7-submit,
+.social-links.presentation li:hover,
+.testimonial-nav li,
+#nav li.home:hover,
+#nav li.home.active,
+#tweet-sroll-wrapper .tweet-icon,
+.social-feed .img-overlay,
+.pagination li.arrow-prev:hover,
+.pagination li.arrow-next:hover,
+.portfolio-carousel-navigation  .portfolio-grid:hover,
+.tabs li.active,
+.nivo-prevNav,
+.home-slider .nivo-prevNav,
+.nivo-nextNav,
+.home-slider .nivo-nextNav,
+.links .arrow-prev:hover,
+.links .arrow-next:hover,
+.links .portfolio-grid:hover,
+.portfolio-slider .nivo-directionNav .nivo-nextNav,
+.portfolio-slider .nivo-prevNav,
+.blog-slider .nivo-prevNav,
+.blog-slider .nivo-nextNav{
+    background-color: #f1b604;
+}
+
+a:hover,
+.text-color,
+.breadcrumbs li.active a,
+.tabs.vertical.blog li.active .title-meta h4,
+.tab-content-wrap.vertical .title-meta h4,
+.team-description .position,
+.service-info h6,
+.service-box.simple:hover .service-icon,
+.service-box.simple:hover .service-info h6,
+.tabs.vertical li.active i,
+.portfolio-filter-container li.active a,
+.blog-post .title-meta h1:hover,
+.blog-post.format-link .post-body a.link,
+.post-comments .comments-li .comment .comment-meta a.author:hover,
+.widget_recent_comments li a:hover,
+.tweets-list-container a:hover,
+#footer a:hover,
+a.read-more,
+.footer-widget-container .widget_recent_comments li a:hover{
+    color: #f1b604;
+}
+
+
+.tabs.vertical.blog li.active .post-date,
+.post-date, 
+.pagination li:hover, .pagination li.active, 
+.service-box:hover, 
+.widget_tag_cloud a:hover{
+    background: #f1b604;
+    border: 1px solid #e2ab05;
+}
+
+.tabs li.active{
+    border-bottom: 1px solid #f1b604;
+    border-top: 1px solid #f1b604;
+}
+
+#nav li.home:hover:before,
+#nav li.home.active:before,
+#search:before{
+    border-bottom: 40px solid #f1b604;
+}
+
+#search:after{
+    border-top: 40px solid #f1b604;
+}
+
+blockquote.blockquote-style2{
+    border-left: 3px solid #f1b604;
+}
+
+.btn-small:hover,
+.btn-medium:hover,
+.btn-big:hover,
+.caption-hover li:hover,
+.comment-reply-link:hover,
+#respond #comment-reply:hover,
+.wpcf7-submit:hover,
+.testimonial-nav li:hover,
+.nivo-prevNav:hover,
+.home-slider .nivo-prevNav:hover,
+.portfolio-slider .nivo-nextNav:hover,
+.portfolio-slider .nivo-prevNav:hover,
+.blog-slider .nivo-prevNav:hover,
+.blog-slider .nivo-nextNav:hover{
+    background-color: #e2ab05;
+}
+
+.nivo-nextNav:hover,
+.home-slider .nivo-nextNav:hover{
+    background-color: #e2ab05 !important;
+}
+
+.blog-post.format-link .post-body a.link:hover,
+a.read-more:hover,
+.breadcrumbs li.active a:hover{
+    color: #e2ab05;
+}
+
+.tabs.vertical.blog li.active .post-date span,
+.service-box:hover .service-info span,
+.post-date span,
+.pricing-table-col.selected .head span.price{
+    color: #fdf6ce;
+}
+
+.pricing-table-col.selected .head,
+.expand{
+    background: rgb(241,182,4); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(241,182,4,1) 0%, rgba(226,171,5,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(241,182,4,1)), color-stop(100%,rgba(226,171,5,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(241,182,4,1) 0%,rgba(226,171,5,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(241,182,4,1) 0%,rgba(226,171,5,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(241,182,4,1) 0%,rgba(226,171,5,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(241,182,4,1) 0%,rgba(226,171,5,1) 100%); /* W3C */
+
+    border: 1px solid #c79705;
+}
+
+.expand{ 
+    box-shadow: inset 0 0 2px #fdf6ce;
+}
+
+.service-box:hover:before{
+    background: #c79705;
+    border: 1px solid #9e7806;
 }
