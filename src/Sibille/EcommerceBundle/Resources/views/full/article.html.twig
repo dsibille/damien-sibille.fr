@@ -2,7 +2,9 @@
 
 {% block opengraph %}
 <meta property="og:type"        content="article" />
-{% if not ez_is_field_empty(content, 'image') %}
+{% if ez_is_field_empty(content, 'image') %}
+<meta property="og:image"       content="{{ asset( 'img/blog/default-blog-image.jpg' ) }}" /> 
+{% else %}
 {% set imageAlias = ez_image_alias( content.getField( 'image' ), content.versionInfo, 'original' ) %}
 <meta property="og:image"       content="{{ asset( imageAlias.uri, absolute=true ) }}" /> 
 {% endif %}   
@@ -81,8 +83,12 @@
                 </div>
             </section>
 
+            {# INTRO ARTICLE #}
+            <article class="post-body blog" itemprop="headline">            
+            {{ ez_render_field(content, 'intro') }}
+            </article>
+            
             {# CORPS ARTICLE #}
-            <meta itemprop="headline" content="{{ ez_render_field(content, 'intro')|striptags|truncate(100, true, '...') }}">
             <article class="post-body blog" itemprop="text">            
             {{ ez_render_field(content, 'body') }}
             </article>

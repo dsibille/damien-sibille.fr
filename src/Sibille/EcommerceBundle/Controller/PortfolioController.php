@@ -24,7 +24,10 @@ class PortfolioController extends Controller
                 new Criterion\ContentTypeIdentifier( 'projet' )
             )
         );
-        $query->sortClauses = array( new SortClause\Field('projet', 'annee', Query::SORT_DESC, 'fre-FR') );
+        $query->sortClauses = array( 
+            new SortClause\Field('projet', 'annee', Query::SORT_DESC, 'fre-FR'),
+            new SortClause\Field('projet', 'mois', Query::SORT_DESC, 'fre-FR') 
+            );
         
         $pager = new Pagerfanta(
             new ContentSearchAdapter( $query, $this->getRepository()->getSearchService() )
@@ -67,7 +70,10 @@ class PortfolioController extends Controller
                 new Criterion\ContentTypeIdentifier( 'projet' )
             )
         );
-        $query->sortClauses = array( new SortClause\Field('projet', 'annee', Query::SORT_DESC, 'fre-FR') );
+        $query->sortClauses = array( 
+            new SortClause\Field('projet', 'annee', Query::SORT_DESC, 'fre-FR'),
+            new SortClause\Field('projet', 'mois', Query::SORT_DESC, 'fre-FR') 
+            );
         
         $result = $this->getRepository()->getSearchService()->findContent($query);
         $locationIds = array();

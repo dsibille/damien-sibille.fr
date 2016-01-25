@@ -130,8 +130,8 @@
 
 {% block script %}
     {{ parent() }}
-    <script  src="https://maps.google.com/maps/api/js?sensor=true"></script> <!-- google maps -->
-    <script  src="{{ asset('js/jquery.ui.map.full.min.js') }}"></script> <!-- jquery plugin for google maps -->  
+    <script  src="https://maps.google.com/maps/api/js?sensor=true"></script> 
+    <script  src="{{ domaine.url ~ 'js/jquery.ui.map.full.min.js' }}"></script>
     
     <script>
         /* <![CDATA[ */

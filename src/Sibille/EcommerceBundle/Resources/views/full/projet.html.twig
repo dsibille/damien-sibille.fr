@@ -110,32 +110,41 @@
     </article>
 
     {# CONTENU TEXTE #}
-    <div class="grid_8 projet">
+    <div class="grid_8">
 
         {% if not ez_is_field_empty(content, 'mission') %}
         <h2>Le projet</h2>
-        <meta itemprop="headline" content="{{ ez_render_field(content, 'mission') }}">{{ ez_render_field(content, 'mission') }}
+        <div itemprop="headline" class="projet">
+        {{ ez_render_field(content, 'mission') }}
+        </div>
         <br />
         {% endif %}
 
         {% if not ez_is_field_empty(content, 'enjeux') %}
         <h2>Enjeux et objectifs</h2>
+        <div class="projet">
         {{ ez_render_field(content, 'enjeux') }}
+        </div>
         <br />
         {% endif %}
 
         {% if not ez_is_field_empty(content, 'contenu') %}
         <h2>Description</h2>
-        <meta itemprop="text" content="{{ ez_render_field(content, 'contenu') }}">{{ ez_render_field(content, 'contenu') }}
+        <div itemprop="text" class="projet">
+        {{ ez_render_field(content, 'contenu') }}
+        </div>
         <br />
         {% endif %}
 
         {% if not ez_is_field_empty(content, 'resultats') %}
         <h2>Résultats</h2>
+        <div class="projet">
         {{ ez_render_field(content, 'resultats') }}
+        </div>
         {% endif %}
 
         {# AUTEUR #}
+        <br />
         <article class="post-author" itemprop="creator" itemscope="" itemtype="http://schema.org/Person">
         {% include "SibilleEcommerceBundle:parts:auteur.html.twig" with { 'type':'creator' } %}
         </article>
@@ -148,16 +157,14 @@
 
 {% block script %}
     {{ parent() }}
-    <script  src="{{ asset('js/portfolio.min.js') }}"></script> <!-- portfolio custom options -->
-    <script  src="{{ asset('js/jquery.nivoslider.min.js') }}"></script><!-- nivo slider -->
     <script>
-        /* <![CDATA[ */
-        /* NIVO SLIDER */
-        $(window).load(function() {
-            $('#slider').nivoSlider({
-                controlNav: false
-            });
-        });
-        /* ]]> */
-    </script>
+     /* <![CDATA[ */
+     /* NIVO SLIDER */
+     $(window).load(function() {
+         $('#slider').nivoSlider({
+             controlNav: false
+         });
+     });
+      /* ]]> */
+ </script>
 {% endblock %}

@@ -76,33 +76,3 @@
 </div>
     
 {% endblock %}
-
-{% block script %}
-    {{ parent() }}
-    <script  src="{{ asset('js/jquery.nivoslider.min.js') }}"></script><!-- nivo slider -->
-    <script  src="{{ asset('js/jplayer/jquery.jplayer.min.js') }}"></script> <!-- prettyPhoto lightbox -->
-    
-    <script>
-        /* <![CDATA[ */
-        /* NIVO SLIDER */
-        $(window).load(function() {
-            $('#slider').nivoSlider({
-                controlNav: false
-            });
-        });
-
-        /* AUDIO PLAYER */
-        $("#jquery_jplayer_1").jPlayer({
-            ready: function (event) {
-                $(this).jPlayer("setMedia", {
-                    m4a:"http://www.jplayer.org/audio/m4a/TSP-01-Cro_magnon_man.m4a",
-                    oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg"
-                });
-            },
-            swfPath: "js/jplayer/",
-            supplied: "m4a, oga",
-            wmode: "window"
-        });
-        /* ]]> */
-    </script>
-{% endblock %}

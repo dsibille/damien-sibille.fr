@@ -25,26 +25,24 @@
         {% endblock %}    
         
         {% block stylesheets %}
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Oswald:400,700' rel='stylesheet' type='text/css'>
         
         <link rel="stylesheet" href="{{ asset('css/style.min.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('pixons/style.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('service-icons/style.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('css/nivo-slider.min.css') }}" type="text/css" />        
-        
         <!--[if (gte IE 9)]>
-            <link rel="stylesheet" href="{{ asset('css/ie.css') }}" media="screen" />
+            <link rel="stylesheet" href="{{ domaine.url ~ 'css/ie.css' }}" media="screen" />
         <![endif]-->
         
         <!--[if IE 8]>
-            <link rel="stylesheet" href="{{ asset('css/ie8.css') }}" media="screen" />
+            <link rel="stylesheet" href="{{ domaine.url ~ 'css/ie8.css' }}" media="screen" />
         <![endif]-->
         {% endblock %}
 
         {% block javascript %}
         <!--[if lt IE 9]>
-            <script src="{{ asset('js/html5shiv.js') }}"></script>
+            <script src="{{ domaine.url ~ 'js/html5shiv.js' }}"></script>
         <![endif]-->
         {% endblock %}
 
@@ -94,10 +92,7 @@
         </div>
 
         {% block script %}
-        <script  src="{{ asset('js/jquery-1.8.3.js') }}"></script> <!-- jQuery library -->   
-        <script  src="{{ asset('js/jquery.socialstream.min.js') }}"></script> <!-- Social Networks Feeds -->
-        <script  src="{{ asset('js/include.min.js') }}"></script> <!-- jQuery custom options -->
-
+        <script  src="{{ domaine.url ~ 'js/jquery.js' }}"></script>
         <script>
             /* <![CDATA[ */            
             $('.tweets-list-container').tweetscroll({
@@ -117,7 +112,6 @@
                 limit: 15,
                 username: 'damiensibille'
             })
-
         /* ]]> */
         </script>
         {% endblock %}
