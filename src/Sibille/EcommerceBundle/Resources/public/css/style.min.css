@@ -29,6 +29,11 @@ a:focus{outline:none}
 div.projet > ul{list-style:square;margin-top:0!important;padding-left:20px!important;padding-top:0!important}
 div.projet h2{font:16px 'Open Sans',Arial,sans-serif;font-weight:700;margin-top:11px}
 div.projet h3{font:14px 'Open Sans',Arial,sans-serif;font-weight:600;text-transform:initial;margin-top:11px}
+article.experience > ul{list-style:square;margin-top:0!important;padding-left:20px!important;padding-top:0!important}
+article.experience h2{font:17px 'Open Sans',Arial,sans-serif;font-weight:800;text-transform:initial;margin-top:11px}
+article.experience h3{font:14px 'Open Sans',Arial,sans-serif;font-weight:500;text-transform:uppercase;padding-top:6px}
+article.experience span.dropcap-color{color:#fff;margin-right:10px;font:16px 'Open Sans',Arial,sans-serif;line-height:16px;padding:6px 8px;top:12px}
+article.experience blockquote.blockquote-style2{background:none;border-top:none;border-right:none;border-bottom:none;box-sizing:border-box;-moz-box-sizing:border-box;width:100%;padding:5px 0 5px 20px;margin-bottom:10px; }
 article.blog > ul{list-style:square;margin-top:0!important;padding-left:20px!important;padding-top:0!important}
 article.blog > ol{list-style-type:decimal;margin-top:0!important;padding-left:20px!important;padding-top:0!important}
 article.blog h2{font:17px 'Open Sans',Arial,sans-serif;font-weight:600;text-transform:initial;margin-top:11px}
@@ -194,6 +199,7 @@ strong + p{display:block;margin-top:14px}
 strong + img{margin-top:20px}
 .projet a{font:12px Arial,sans-serif;color:#c90;text-decoration:underline!important;text-decoration-style:dotted!important;text-decoration-color:#c90;-moz-text-decoration-color:#c90;-moz-text-decoration-style:dotted;-webkit-transition:all .2s ease 0;-moz-transition:all .2s ease 0;-o-transition:all .2s ease 0;-ms-transition:all .2s ease 0;transition:all .2s ease 0}
 .blog a{font:12px Arial,sans-serif;color:#c90;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#c90;-moz-text-decoration-color:#c90;-moz-text-decoration-style:dotted;-webkit-transition:all .2s ease 0;-moz-transition:all .2s ease 0;-o-transition:all .2s ease 0;-ms-transition:all .2s ease 0;transition:all .2s ease 0}
+.experience a{font:12px Arial,sans-serif;color:#c90;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#c90;-moz-text-decoration-color:#c90;-moz-text-decoration-style:dotted;-webkit-transition:all .2s ease 0;-moz-transition:all .2s ease 0;-o-transition:all .2s ease 0;-ms-transition:all .2s ease 0;transition:all .2s ease 0}
 a{font:12px Arial,sans-serif;color:#666;-webkit-transition:all .2s ease 0;-moz-transition:all .2s ease 0;-o-transition:all .2s ease 0;-ms-transition:all .2s ease 0;transition:all .2s ease 0}
 a.read-more{-webkit-transition:all .2s ease 0;-moz-transition:all .2s ease 0;-o-transition:all .2s ease 0;-ms-transition:all .2s ease 0;transition:all .2s ease 0}
 p + blockquote,a + blockquote{display:block;margin-top:20px}
@@ -201,8 +207,8 @@ blockquote + p,blockquote + a{display:block;margin-top:20px;float:left}
 img.float-left{float:left;margin-right:15px}
 img.float-right{float:right;margin-left:15px}
 span.underline{text-decoration:underline}
-blockquote{background:#fafafa url(../img/quote.png) 20px 20px no-repeat;border:1px solid #ddd;padding:20px;float:left;font:italic 11px Arial,sans-serif;line-height:20px}
-blockquote.blockquote-style2{background:none;border-top:none;border-right:none;border-bottom:none;box-sizing:border-box;-moz-box-sizing:border-box;width:100%;padding:10px 0 10px 20px}
+blockquote{background:#fafafa url(../img/quote.png) 20px 20px no-repeat;border:1px solid #ddd;padding:16px;float:left;font:normal 700 12px Arial,sans-serif;line-height:20px}
+blockquote.blockquote-style2{background:none;border-top:none;border-right:none;border-bottom:none;box-sizing:border-box;-moz-box-sizing:border-box;width:100%;padding:5px 0 5px 20px;margin-bottom:10px; }
 .grid_3 .blockquote-style3 blockquote{width:110px}
 .grid_4 .blockquote-style3 blockquote{width:190px}
 .grid_5 .blockquote-style3 blockquote{width:270px}

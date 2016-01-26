@@ -1,0 +1,49 @@
+{% extends "SibilleEcommerceBundle::pagelayout.html.twig" %}
+
+{% block title %}
+<article class="page-title">
+    
+    <section class="title">
+        <h1>Expérience <span class="text-color">professionnelle</span></h1>
+    </section> 
+
+    <!-- .breadcrumbs start -->
+    <ul class="breadcrumbs">
+        <li>
+            vous êtes ici:
+        </li>
+        <li class="home-icon">
+            <a href="/">/</a>
+        </li>
+        <li class="active">
+            <a href="#">{{ ez_field_value(content, 'title') }}</a>
+        </li>
+    </ul>
+
+</article> 
+{% endblock %}
+
+{% block content %}
+<section class="container_12">
+
+    <article class="grid_12 alpha omega note with-btn">
+        <section class="title">
+            <h1>Responsable e-commerce avec double compétence marketing et informatique.</h1>
+            <p>Domaines d'expertise : stratégie webmarketing, e-tourisme, gestion de projet web & e-commerce, développement web.</p>
+        </section> 
+        
+        
+        <section class="title-btn">
+            <a class="btn-medium" href="{{ cv[2].value.uri }}" target="_blank">
+                <span>Télécharger mon CV</span>
+            </a>
+        </section> 
+    </article>
+    {% for experience in experiences %}
+    {{ render( controller( 'ez_content:viewLocation', 
+        {'locationId': experience.contentInfo.mainLocationId, 'viewType': 'line'} ) ) 
+    }}
+    {% endfor %}
+    
+</section>
+{% endblock %}

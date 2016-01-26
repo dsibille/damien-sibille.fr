@@ -2,7 +2,7 @@
 <nav id="nav">
     <ul>
         {% for item in menuItems %}
-        {% set itemName = item.versionInfo.contentInfo.name|lower %}
+        {% set itemName = item.versionInfo.contentInfo.name|lower|replace({'é':'e'}) %}
         {% set currentName = app.request.server.get("SCRIPT_NAME")|split('/') %} 
         {% if itemName == 'home' %}
         <li class="home{% if currentName[1] == '' %} active{% endif %}">

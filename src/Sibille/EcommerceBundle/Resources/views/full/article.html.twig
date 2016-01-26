@@ -84,12 +84,13 @@
             </section>
 
             {# INTRO ARTICLE #}
-            <article class="post-body blog" itemprop="headline">            
-            {{ ez_render_field(content, 'intro') }}
-            </article>
+            <blockquote class="blockquote-style2" itemprop="headline">
+            {{ ez_render_field(content, 'intro')|striptags }}
+            </blockquote>
             
             {# CORPS ARTICLE #}
-            <article class="post-body blog" itemprop="text">            
+            <article class="post-body blog" itemprop="text">    
+            <br />
             {{ ez_render_field(content, 'body') }}
             </article>
         </article>

@@ -1,0 +1,43 @@
+{# TEMPLATE LINE EXPERIENCE #}
+<article class="grid_2 experience">
+    <p><span class="dropcap-color">{{ ez_field_value(content, 'periode') }}</span></p>
+    <p><h3>{{ ez_render_field(content, 'societe') }}</h3></p>
+</article>
+<article class="grid_7 experience">
+    {# FONCTION #}
+    <section class="section-title">
+        <h2>{{ ez_field_value(content, 'fonction') }}</h2>
+    </section>
+
+    {# RESUME #}
+    {% if not ez_is_field_empty(content, 'resume') %}
+    <blockquote class="blockquote-style2">
+    {{ ez_render_field(content, 'resume') }}
+    </blockquote>
+    {% endif %}
+
+    {# DETAIL #}
+    {{ ez_render_field(content, 'contenu') }}
+
+</article>
+
+<article class="grid_3">
+    
+    {# TAGS TECHNO #}
+    <ul class="aside_widgets">
+        <li class="widget widget_tag_cloud">
+            <br /><br />
+            <div class="tagcloud">
+            {% set technos = content.getField( 'techno').value.values %}
+            {% for techno in technos %}
+                <a href="#">{{ techno }}</a>
+            {% endfor %}
+            
+            </div>
+        </li>
+    </ul>
+            
+</article>
+    
+<div class="clearfix"></div>
+    

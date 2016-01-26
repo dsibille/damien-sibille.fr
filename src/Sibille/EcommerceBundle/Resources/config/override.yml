@@ -18,6 +18,11 @@ ezpublish:
                         template: SibilleEcommerceBundle:full:services.html.twig
                         match:
                             Id\Location: 72
+                    profil:
+                        controller: SibilleEcommerceBundle:Profil:index
+                        template: SibilleEcommerceBundle:full:profil.html.twig
+                        match:
+                            Id\Location: 123
                     portfolio:
                         controller: SibilleEcommerceBundle:Portfolio:index
                         template: SibilleEcommerceBundle:full:portfolio.html.twig
@@ -56,4 +61,8 @@ ezpublish:
                         template: SibilleEcommerceBundle:line:article.html.twig
                         match:
                             Identifier\ContentType: article
+                    experience:
+                        template: SibilleEcommerceBundle:line:experience.html.twig
+                        match:
+                            Identifier\ContentType: experience
  
