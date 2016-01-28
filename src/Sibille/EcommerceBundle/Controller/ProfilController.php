@@ -34,7 +34,7 @@ class ProfilController extends Controller
         }
   
         // lecture fichier média 
-        $cv = $contentService->loadContent( 132 )->getFields();
+        $cv = $contentService->loadContent( 135 );
 
         return $this->render(
             'SibilleEcommerceBundle:full:profil.html.twig', array(

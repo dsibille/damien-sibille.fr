@@ -26,6 +26,7 @@ a{list-style:none;text-decoration:none}
 a:active{outline:none}
 a:focus{outline:none}
 :focus{outline:0}
+section.home h2{font:15px 'Open Sans',Arial,sans-serif;font-weight:700}
 div.projet > ul{list-style:square;margin-top:0!important;padding-left:20px!important;padding-top:0!important}
 div.projet h2{font:16px 'Open Sans',Arial,sans-serif;font-weight:700;margin-top:11px}
 div.projet h3{font:14px 'Open Sans',Arial,sans-serif;font-weight:600;text-transform:initial;margin-top:11px}
@@ -40,10 +41,12 @@ article.blog h2{font:17px 'Open Sans',Arial,sans-serif;font-weight:600;text-tran
 article.blog h3{font:15px 'Open Sans',Arial,sans-serif;font-weight:500;text-transform:initial;margin-top:11px}
 article.blog h4{font:12px 'Open Sans',Arial,sans-serif;margin-top:11px}
 article.blog h5{margin-top:11px}
+article.title-only {margin-bottom: 0px !important}
 div.contact h2{font:15px 'Open Sans',Arial,sans-serif;font-weight:700}
 div.auteur{padding-top:8px;padding-bottom:2px}
 div.auteur a{padding-top:5px!important;margin-top:0!important}
 div.auteur h3{font:15px 'Open Sans',Arial,sans-serif;font-weight:600;text-transform:initial;margin-top:0!important}
+.title-noh {font:bold 18px 'Open Sans',Arial,sans-serif;color:#444;text-transform:initial;}
 .container_12{margin-left:auto;margin-right:auto;width:960px}
 .grid_1,.grid_2,.grid_3,.grid_4,.grid_5,.grid_6,.grid_7,.grid_8,.grid_9,.grid_10,.grid_11,.grid_12{display:inline;float:left;margin-left:10px;margin-right:10px;margin-bottom:35px}
 .push_1,.pull_1,.push_2,.pull_2,.push_3,.pull_3,.push_4,.pull_4,.push_5,.pull_5,.push_6,.pull_6,.push_7,.pull_7,.push_8,.pull_8,.push_9,.pull_9,.push_10,.pull_10,.push_11,.pull_11{position:relative}
@@ -283,7 +286,7 @@ input.search-bkg{border:0;font:italic 11px Arial,sans-serif;color:#aaa;backgroun
 .note.with-btn .title{padding:20px;text-align:left;max-width:800px}
 .note .title h1{margin:0;text-transform:none}
 .note.with-btn .title-btn{position:absolute;top:50%;right:20px;display:block;margin-top:-17px}
-.slider-wrapper{width:100%;float:left;margin:0 0 30px -20px;height:auto}
+.slider-wrapper{width:100%;float:left;margin:0 0 15px -20px;height:auto}
 .nivoSlider.home-slider{position:relative;width:1000px;margin:0 auto;height:auto;z-index:100;overflow:hidden;margin-bottom:30px;min-height:361px}
 .nivoSlider.home-slider img,.home-slider .nivo-main-image{width:1000px}
 .home-slider .nivo-directionNav a{height:40px;width:40px;bottom:0!important;margin-top:-40px;top:100%}

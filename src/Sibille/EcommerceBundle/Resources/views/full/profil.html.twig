@@ -3,8 +3,8 @@
 {% block title %}
 <article class="page-title">
     
-    <section class="title">
-        <h1>Expérience <span class="text-color">professionnelle</span></h1>
+    <section class="title title-noh">
+        Expérience <span class="text-color">professionnelle</span>
     </section> 
 
     <!-- .breadcrumbs start -->
@@ -32,9 +32,8 @@
             <p>Domaines d'expertise : stratégie webmarketing, e-tourisme, gestion de projet web & e-commerce, développement web.</p>
         </section> 
         
-        
         <section class="title-btn">
-            <a class="btn-medium" href="{{ cv[2].value.uri }}" target="_blank">
+            <a class="btn-medium" href="{{ cv.getFields()[2].value.uri }}" target="_blank">
                 <span>Télécharger mon CV</span>
             </a>
         </section> 

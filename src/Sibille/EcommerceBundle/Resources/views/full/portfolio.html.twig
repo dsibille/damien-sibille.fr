@@ -4,7 +4,7 @@
 <article class="page-title">
     
     <section class="title">
-        <h1><span class="text-color">{{ ez_field_value(content, 'title') }}</span> de mes réalisations</h1>
+        <h1>{{ ez_field_value(content, 'title') }} de <span class="text-color">mes références projets</span></h1>
     </section> 
 
     <ul class="breadcrumbs">
@@ -23,6 +23,14 @@
 {% endblock %}
 
 {% block content %}
+
+{# CONTENU TEXTE #}
+<section class="container_12">
+    <article class="grid_12">
+    {{ ez_render_field(content, 'contenu') }}
+    </article>  
+</section>
+    
 {# FILTRE #}
 <div class="container_12">
     <section class="grid_12 portfolio-filter-container">

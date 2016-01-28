@@ -32,22 +32,24 @@
 {% block content %}
 <section class="container_12">
 
-    {# SERVICES #}
-    <section class="section-title">
-        <h3>Prestations</h3>
-    </section>
-    {% for service in services %}
-        {% set class = '' %}
-        {{ render( controller( 'ez_content:viewLocation', 
-            {'locationId': service.contentInfo.mainLocationId, 'viewType': 'line', params: {'class': class} } ) ) 
-        }}
-    {% endfor %}
-    
+    {# PRESENTATION / RESUME PROFIL #}
+    <article class="grid_12 alpha omega note with-btn">
+        <section class="title">
+            {{ ez_render_field(content, 'presentation') }}
+        </section>     
+        
+        <section class="title-btn">
+            <a class="btn-medium" href="/experience">
+                <span>Consultez le CV</span>
+            </a>
+        </section> 
+    </article>
+
     {# DERNIERS PROJETS #}
     <article class="grid_12 portfolio-carousel clearfix">
 
-        <section class="section-title">
-            <h3>Projets récents</h3>
+        <section class="section-title home">
+            <h2>Projets récents</h2>
             <ul class="portfolio-carousel-navigation">
                 <li>
                     <a class="portfolio-carousel-nav prev" href="#"></a> 
@@ -74,10 +76,23 @@
         </ul>
     </article>
 
+    {# SERVICES #}
+    <article class="grid_12 title-only">
+        <section class="section-title home">
+            <h2>Prestations</h2>
+        </section>
+    </article>
+    {% for service in services %}
+        {% set class = '' %}
+        {{ render( controller( 'ez_content:viewLocation', 
+            {'locationId': service.contentInfo.mainLocationId, 'viewType': 'line', params: {'class': class} } ) ) 
+        }}
+    {% endfor %}
+    
     {# DERNIERS POSTS #}
     <article class="grid_8">
-        <section class="section-title">
-            <h3>Derniers posts</h3>
+        <section class="section-title home">
+            <h2>Derniers posts</h2>
         </section>
 
         {# LISTE DES POSTS #}
@@ -137,8 +152,8 @@
         
     {# ATOUTS / COMPETENCES #}
     <article class="grid_4">
-        <section class="section-title">
-            <h3>Compétences</h3>
+        <section class="section-title home">
+            <h2>Compétences</h2>
         </section>
 
          <article class="accordion"> 

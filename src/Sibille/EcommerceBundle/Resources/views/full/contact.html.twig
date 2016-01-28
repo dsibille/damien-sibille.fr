@@ -89,7 +89,7 @@
         </div>
 
         {# FORMULAIRE DE CONTACT #}
-        {{ form_start(form, {'method': 'POST', 'attr': {'class': 'wpcf7' }, 'id': 'contact-form', 'name': 'contact-form' }) }}
+        {{ form_start(form, {'method': 'POST', 'attr': {'class': 'wpcf7', 'id': 'contact-form' }  }) }}
         <div class="grid_5" style="margin-bottom: 0 !important">
             <fieldset>
                 {{ form_widget(form.nom, {'attr': {'class': 'wpcf7-text', 'placeholder': 'Nom'}}) }}
